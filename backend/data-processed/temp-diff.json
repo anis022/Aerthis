@@ -1,0 +1,784 @@
+{
+  "temp-diff": [
+    {
+      "Code": "AFG",
+      "Temperature": -0.7209494151234849
+    },
+    {
+      "Code": "AGO",
+      "Temperature": -0.5500873088181818
+    },
+    {
+      "Code": "AIA",
+      "Temperature": -0.40762418617727275
+    },
+    {
+      "Code": "ALB",
+      "Temperature": -0.8868754732562878
+    },
+    {
+      "Code": "AND",
+      "Temperature": -1.1601287776363636
+    },
+    {
+      "Code": "ARE",
+      "Temperature": -1.284280694378788
+    },
+    {
+      "Code": "ARG",
+      "Temperature": -0.6147001372409091
+    },
+    {
+      "Code": "ARM",
+      "Temperature": -1.358945514568182
+    },
+    {
+      "Code": "ASM",
+      "Temperature": -0.45719370748484844
+    },
+    {
+      "Code": "ATG",
+      "Temperature": -0.43372535753030306
+    },
+    {
+      "Code": "AUS",
+      "Temperature": -0.34330368884848483
+    },
+    {
+      "Code": "AUT",
+      "Temperature": -1.620714977371212
+    },
+    {
+      "Code": "AZE",
+      "Temperature": -0.9321494035
+    },
+    {
+      "Code": "BDI",
+      "Temperature": -0.7086297535378788
+    },
+    {
+      "Code": "BEL",
+      "Temperature": -0.944774644848485
+    },
+    {
+      "Code": "BEN",
+      "Temperature": -1.2086261669772727
+    },
+    {
+      "Code": "BFA",
+      "Temperature": -1.2664358407045455
+    },
+    {
+      "Code": "BGD",
+      "Temperature": -0.6139587202575758
+    },
+    {
+      "Code": "BGR",
+      "Temperature": -1.0996044471727273
+    },
+    {
+      "Code": "BHR",
+      "Temperature": -0.44546488656060607
+    },
+    {
+      "Code": "BHS",
+      "Temperature": -0.21296321886363637
+    },
+    {
+      "Code": "BIH",
+      "Temperature": -1.6920862313856062
+    },
+    {
+      "Code": "BLR",
+      "Temperature": -1.8254238982348487
+    },
+    {
+      "Code": "BLZ",
+      "Temperature": -1.4501089463446968
+    },
+    {
+      "Code": "BOL",
+      "Temperature": -0.9746224429090908
+    },
+    {
+      "Code": "BRA",
+      "Temperature": -0.7962295923863636
+    },
+    {
+      "Code": "BRN",
+      "Temperature": -1.542230042121212
+    },
+    {
+      "Code": "BTN",
+      "Temperature": -1.4640588205257574
+    },
+    {
+      "Code": "BWA",
+      "Temperature": -0.4579756641287878
+    },
+    {
+      "Code": "CAF",
+      "Temperature": -0.47110475303257576
+    },
+    {
+      "Code": "CAN",
+      "Temperature": -0.9350698152727273
+    },
+    {
+      "Code": "CHE",
+      "Temperature": -1.6530717650454547
+    },
+    {
+      "Code": "CHL",
+      "Temperature": -0.9793888742727273
+    },
+    {
+      "Code": "CHN",
+      "Temperature": -0.588518046139394
+    },
+    {
+      "Code": "CIV",
+      "Temperature": -1.089485995190909
+    },
+    {
+      "Code": "CMR",
+      "Temperature": -0.7322131085131364
+    },
+    {
+      "Code": "COD",
+      "Temperature": -0.7547586302727273
+    },
+    {
+      "Code": "COG",
+      "Temperature": -0.6236603184166666
+    },
+    {
+      "Code": "COK",
+      "Temperature": -0.46246878350757575
+    },
+    {
+      "Code": "COL",
+      "Temperature": -1.1785619203484847
+    },
+    {
+      "Code": "COM",
+      "Temperature": -0.46670083128030304
+    },
+    {
+      "Code": "CPV",
+      "Temperature": -0.1908520498021212
+    },
+    {
+      "Code": "CRI",
+      "Temperature": -0.8615972932525757
+    },
+    {
+      "Code": "CUB",
+      "Temperature": -0.23139300530454546
+    },
+    {
+      "Code": "CYM",
+      "Temperature": -0.35449162368939396
+    },
+    {
+      "Code": "CYP",
+      "Temperature": -1.162919994394697
+    },
+    {
+      "Code": "CZE",
+      "Temperature": -1.4378082125
+    },
+    {
+      "Code": "DEU",
+      "Temperature": -1.1957456736363634
+    },
+    {
+      "Code": "DJI",
+      "Temperature": -1.6347719768030302
+    },
+    {
+      "Code": "DNK",
+      "Temperature": -1.0627827339015152
+    },
+    {
+      "Code": "DOM",
+      "Temperature": -0.7073061993712121
+    },
+    {
+      "Code": "DZA",
+      "Temperature": -1.9120475114242426
+    },
+    {
+      "Code": "ECU",
+      "Temperature": -0.9142692168939394
+    },
+    {
+      "Code": "EGY",
+      "Temperature": -1.684972707878788
+    },
+    {
+      "Code": "ERI",
+      "Temperature": -2.15078757219697
+    },
+    {
+      "Code": "ESP",
+      "Temperature": -1.1277779531136363
+    },
+    {
+      "Code": "EST",
+      "Temperature": -1.5694424092954546
+    },
+    {
+      "Code": "ETH",
+      "Temperature": -1.5452438128787878
+    },
+    {
+      "Code": "FIN",
+      "Temperature": -1.0504231452348485
+    },
+    {
+      "Code": "FJI",
+      "Temperature": -0.6703443690454546
+    },
+    {
+      "Code": "FLK",
+      "Temperature": -0.7790844850833332
+    },
+    {
+      "Code": "FRA",
+      "Temperature": -1.001761530403788
+    },
+    {
+      "Code": "FRO",
+      "Temperature": -0.30434946144166664
+    },
+    {
+      "Code": "GAB",
+      "Temperature": -1.0402033370757577
+    },
+    {
+      "Code": "GBR",
+      "Temperature": -0.745246244659091
+    },
+    {
+      "Code": "GEO",
+      "Temperature": -1.4381887754924243
+    },
+    {
+      "Code": "GHA",
+      "Temperature": -1.0272278225530302
+    },
+    {
+      "Code": "GIN",
+      "Temperature": -1.084184994659091
+    },
+    {
+      "Code": "GMB",
+      "Temperature": -0.8547061588636363
+    },
+    {
+      "Code": "GNB",
+      "Temperature": -0.9359009056212121
+    },
+    {
+      "Code": "GNQ",
+      "Temperature": -1.1216575885606062
+    },
+    {
+      "Code": "GRC",
+      "Temperature": -0.8588827448565909
+    },
+    {
+      "Code": "GRL",
+      "Temperature": -1.2892168383560607
+    },
+    {
+      "Code": "GTM",
+      "Temperature": -1.458322423560606
+    },
+    {
+      "Code": "GUY",
+      "Temperature": -0.8725967398939395
+    },
+    {
+      "Code": "HKG",
+      "Temperature": -1.0327150276386363
+    },
+    {
+      "Code": "HMD",
+      "Temperature": -0.7092833832954546
+    },
+    {
+      "Code": "HND",
+      "Temperature": -1.4967232520454545
+    },
+    {
+      "Code": "HRV",
+      "Temperature": -1.4014350531242423
+    },
+    {
+      "Code": "HTI",
+      "Temperature": -0.6667920030530303
+    },
+    {
+      "Code": "HUN",
+      "Temperature": -0.8694957227651514
+    },
+    {
+      "Code": "IDN",
+      "Temperature": -1.227125761439394
+    },
+    {
+      "Code": "IMN",
+      "Temperature": -0.4563541808560606
+    },
+    {
+      "Code": "IND",
+      "Temperature": -0.7327308379318183
+    },
+    {
+      "Code": "IRL",
+      "Temperature": -0.06135243280984848
+    },
+    {
+      "Code": "IRN",
+      "Temperature": -1.2682994682651516
+    },
+    {
+      "Code": "IRQ",
+      "Temperature": -1.3027739651439394
+    },
+    {
+      "Code": "ISL",
+      "Temperature": -2.177884534878788
+    },
+    {
+      "Code": "ISR",
+      "Temperature": -1.1726259112878787
+    },
+    {
+      "Code": "ITA",
+      "Temperature": -1.295470681176515
+    },
+    {
+      "Code": "JAM",
+      "Temperature": -0.9802860033333333
+    },
+    {
+      "Code": "JOR",
+      "Temperature": -1.2489703302878787
+    },
+    {
+      "Code": "JPN",
+      "Temperature": -1.7918951749469698
+    },
+    {
+      "Code": "KAZ",
+      "Temperature": -0.44060123958106057
+    },
+    {
+      "Code": "KEN",
+      "Temperature": -1.0151061444166667
+    },
+    {
+      "Code": "KGZ",
+      "Temperature": -0.2924771531969697
+    },
+    {
+      "Code": "KHM",
+      "Temperature": -1.5965610413636362
+    },
+    {
+      "Code": "KIR",
+      "Temperature": -0.41341645824242423
+    },
+    {
+      "Code": "KOR",
+      "Temperature": -1.617200105530303
+    },
+    {
+      "Code": "KWT",
+      "Temperature": -1.0996863301780304
+    },
+    {
+      "Code": "LAO",
+      "Temperature": -1.1577935945492424
+    },
+    {
+      "Code": "LBN",
+      "Temperature": -1.0953749874886363
+    },
+    {
+      "Code": "LBR",
+      "Temperature": -0.8518400497424242
+    },
+    {
+      "Code": "LBY",
+      "Temperature": -1.9549358650303033
+    },
+    {
+      "Code": "LKA",
+      "Temperature": -1.0462708629545454
+    },
+    {
+      "Code": "LSO",
+      "Temperature": -0.9843793648863636
+    },
+    {
+      "Code": "LTU",
+      "Temperature": -1.5890033342272725
+    },
+    {
+      "Code": "LUX",
+      "Temperature": -0.9893364015833334
+    },
+    {
+      "Code": "LVA",
+      "Temperature": -1.5795890355575757
+    },
+    {
+      "Code": "MAR",
+      "Temperature": -1.192456942219697
+    },
+    {
+      "Code": "MDA",
+      "Temperature": -1.223445662739394
+    },
+    {
+      "Code": "MDG",
+      "Temperature": -0.9905373101439394
+    },
+    {
+      "Code": "MEX",
+      "Temperature": -1.3386918749242425
+    },
+    {
+      "Code": "MKD",
+      "Temperature": -1.4195297396363638
+    },
+    {
+      "Code": "MLI",
+      "Temperature": -1.6910683260151516
+    },
+    {
+      "Code": "MMR",
+      "Temperature": -1.4248994392878787
+    },
+    {
+      "Code": "MNE",
+      "Temperature": -1.4539085319469696
+    },
+    {
+      "Code": "MNG",
+      "Temperature": -0.20216019506287883
+    },
+    {
+      "Code": "MOZ",
+      "Temperature": -0.40377804768939396
+    },
+    {
+      "Code": "MRT",
+      "Temperature": -1.4785061062878788
+    },
+    {
+      "Code": "MUS",
+      "Temperature": -0.4727818028901515
+    },
+    {
+      "Code": "MWI",
+      "Temperature": -0.5804156244840909
+    },
+    {
+      "Code": "MYS",
+      "Temperature": -1.5088983463636365
+    },
+    {
+      "Code": "NAM",
+      "Temperature": -0.7621820537575758
+    },
+    {
+      "Code": "NCL",
+      "Temperature": -1.0328195888151515
+    },
+    {
+      "Code": "NER",
+      "Temperature": -2.204116566439394
+    },
+    {
+      "Code": "NGA",
+      "Temperature": -0.9619443349090908
+    },
+    {
+      "Code": "NIC",
+      "Temperature": -1.1649624788636364
+    },
+    {
+      "Code": "NLD",
+      "Temperature": -1.0116805990454545
+    },
+    {
+      "Code": "NOR",
+      "Temperature": -2.5318426279545454
+    },
+    {
+      "Code": "NPL",
+      "Temperature": -1.2484447945681818
+    },
+    {
+      "Code": "NZL",
+      "Temperature": -1.4151474101590908
+    },
+    {
+      "Code": "OMN",
+      "Temperature": -0.9704093671590909
+    },
+    {
+      "Code": "OWID_KOS",
+      "Temperature": -1.6335676892272728
+    },
+    {
+      "Code": "OWID_WRL",
+      "Temperature": -0.673234058030303
+    },
+    {
+      "Code": "PAK",
+      "Temperature": -0.32089398521818185
+    },
+    {
+      "Code": "PAN",
+      "Temperature": -1.1325090438636365
+    },
+    {
+      "Code": "PER",
+      "Temperature": -1.1291478529090908
+    },
+    {
+      "Code": "PHL",
+      "Temperature": -1.4444929007575757
+    },
+    {
+      "Code": "PNG",
+      "Temperature": -1.1481204771969695
+    },
+    {
+      "Code": "POL",
+      "Temperature": -1.4837992605757575
+    },
+    {
+      "Code": "PRI",
+      "Temperature": -0.9188011743863637
+    },
+    {
+      "Code": "PRK",
+      "Temperature": -1.7062479275810605
+    },
+    {
+      "Code": "PRT",
+      "Temperature": -0.3625630784166667
+    },
+    {
+      "Code": "PRY",
+      "Temperature": -0.6814052138333332
+    },
+    {
+      "Code": "PSE",
+      "Temperature": -1.005433968159091
+    },
+    {
+      "Code": "PYF",
+      "Temperature": -0.40925261483106057
+    },
+    {
+      "Code": "QAT",
+      "Temperature": -1.1405572247272728
+    },
+    {
+      "Code": "ROU",
+      "Temperature": -1.121394795098485
+    },
+    {
+      "Code": "RUS",
+      "Temperature": -1.190208753
+    },
+    {
+      "Code": "RWA",
+      "Temperature": -0.663696708189394
+    },
+    {
+      "Code": "SAU",
+      "Temperature": -2.14506923680303
+    },
+    {
+      "Code": "SDN",
+      "Temperature": -2.044561845480303
+    },
+    {
+      "Code": "SEN",
+      "Temperature": -1.128404109287879
+    },
+    {
+      "Code": "SGS",
+      "Temperature": -0.8729435731035605
+    },
+    {
+      "Code": "SHN",
+      "Temperature": -0.32243448369924244
+    },
+    {
+      "Code": "SLB",
+      "Temperature": -0.6203856887348485
+    },
+    {
+      "Code": "SLE",
+      "Temperature": -0.8690420453409092
+    },
+    {
+      "Code": "SLV",
+      "Temperature": -1.2616859261363638
+    },
+    {
+      "Code": "SOM",
+      "Temperature": -0.736011360094697
+    },
+    {
+      "Code": "SRB",
+      "Temperature": -1.1360532955356062
+    },
+    {
+      "Code": "SSD",
+      "Temperature": -1.5605797882575756
+    },
+    {
+      "Code": "STP",
+      "Temperature": -0.7029441798863636
+    },
+    {
+      "Code": "SUR",
+      "Temperature": -0.7592069895909092
+    },
+    {
+      "Code": "SVK",
+      "Temperature": -1.658238175901515
+    },
+    {
+      "Code": "SVN",
+      "Temperature": -1.705516612878788
+    },
+    {
+      "Code": "SWE",
+      "Temperature": -1.209169322530303
+    },
+    {
+      "Code": "SWZ",
+      "Temperature": -0.6644288314848485
+    },
+    {
+      "Code": "SYC",
+      "Temperature": -0.5545334531401515
+    },
+    {
+      "Code": "SYR",
+      "Temperature": -1.1024462469090908
+    },
+    {
+      "Code": "TCD",
+      "Temperature": -1.5826256646969696
+    },
+    {
+      "Code": "TGO",
+      "Temperature": -1.1264408387803029
+    },
+    {
+      "Code": "THA",
+      "Temperature": -1.391093472621212
+    },
+    {
+      "Code": "TJK",
+      "Temperature": -0.39114352627272725
+    },
+    {
+      "Code": "TKM",
+      "Temperature": -0.22010575556818185
+    },
+    {
+      "Code": "TLS",
+      "Temperature": -0.7579675740249999
+    },
+    {
+      "Code": "TTO",
+      "Temperature": -0.8638397991515152
+    },
+    {
+      "Code": "TUN",
+      "Temperature": -1.8216142305
+    },
+    {
+      "Code": "TUR",
+      "Temperature": -1.7075264441742422
+    },
+    {
+      "Code": "TZA",
+      "Temperature": -0.6882390783636364
+    },
+    {
+      "Code": "UGA",
+      "Temperature": -1.1569172281363636
+    },
+    {
+      "Code": "UKR",
+      "Temperature": -1.436460451673485
+    },
+    {
+      "Code": "URY",
+      "Temperature": 0.09297448027727272
+    },
+    {
+      "Code": "USA",
+      "Temperature": -1.3594659495454544
+    },
+    {
+      "Code": "UZB",
+      "Temperature": -0.2360028210530303
+    },
+    {
+      "Code": "VCT",
+      "Temperature": -0.5002731702878788
+    },
+    {
+      "Code": "VEN",
+      "Temperature": -1.2850356246439394
+    },
+    {
+      "Code": "VIR",
+      "Temperature": -0.42895194196969694
+    },
+    {
+      "Code": "VNM",
+      "Temperature": -1.2006035466742424
+    },
+    {
+      "Code": "VUT",
+      "Temperature": -0.42087307875
+    },
+    {
+      "Code": "WSM",
+      "Temperature": -0.419495264310606
+    },
+    {
+      "Code": "YEM",
+      "Temperature": -1.9295413997727273
+    },
+    {
+      "Code": "ZAF",
+      "Temperature": -0.7550802094015151
+    },
+    {
+      "Code": "ZMB",
+      "Temperature": -0.6347284191053031
+    },
+    {
+      "Code": "ZWE",
+      "Temperature": -0.7822018667651514
+    }
+  ]
+}
