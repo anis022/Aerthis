@@ -19,7 +19,7 @@ const EarthGlobe = () => {
     }
   }, [globeReady]); // Re-run if globe becomes ready
 
-  const handleGlobeClick = ({ lat, lng }: { lat: number; lng: number }, event) => {
+  const handleGlobeClick = ({ lat, lng }: { lat: number; lng: number }, event: Event) => {
     console.log(`Clicked at Latitude: ${lat}, Longitude: ${lng}`);
     // You can set state or perform other actions here
   };
@@ -31,6 +31,7 @@ const EarthGlobe = () => {
         globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg" // Basic globe texture
         bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png" // Optional: adds terrain texture
         backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png" // Optional: star background
+        
         atmosphereColor="lightskyblue"
         atmosphereAltitude={0.25}
 
