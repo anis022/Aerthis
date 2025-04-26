@@ -11,11 +11,11 @@ const EarthGlobe = () => {
     if (globeEl.current) {
         // Example: Zoom controls
         globeEl.current.controls().enableZoom = true;
-        globeEl.current.controls().autoRotate = true;
-        globeEl.current.controls().autoRotateSpeed = 0.2;
+        globeEl.current.controls().autoRotate = false;
+        // globeEl.current.controls().autoRotateSpeed = 0.2;
 
         // Set initial point of view
-        globeEl.current.pointOfView({ lat: 0, lng: 0, altitude: 2.5 }); // Adjust altitude for zoom
+        globeEl.current.pointOfView({ lat: 0, lng: 0, altitude: 1.5 }); // Adjust altitude for zoom
     }
   }, [globeReady]); // Re-run if globe becomes ready
 
