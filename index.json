@@ -1,0 +1,309 @@
+{
+  "status": "ok",
+  "data": [
+    {
+      "uid": 5922,
+      "aqi": "33",
+      "time": {
+        "tz": "-04:00",
+        "stime": "2025-04-26 11:00:00",
+        "vtime": 1745679600
+      },
+      "station": {
+        "name": "Montreal",
+        "geo": [45.5086699, -73.5539925],
+        "url": "montreal"
+      }
+    },
+    {
+      "uid": 8595,
+      "aqi": "44",
+      "time": {
+        "tz": "-04:00",
+        "stime": "2025-04-26 11:00:00",
+        "vtime": 1745679600
+      },
+      "station": {
+        "name": "Échangeur Décarie, Montreal, Canada",
+        "geo": [45.502648, -73.663913],
+        "url": "canada/montreal/echangeur-decarie",
+        "country": "CA"
+      }
+    },
+    {
+      "uid": 5467,
+      "aqi": "33",
+      "time": {
+        "tz": "-04:00",
+        "stime": "2025-04-26 11:00:00",
+        "vtime": 1745679600
+      },
+      "station": {
+        "name": "Molson, Montreal, Canada",
+        "geo": [45.542767, -73.572039],
+        "url": "canada/montreal/molson",
+        "country": "CA"
+      }
+    },
+    {
+      "uid": 10138,
+      "aqi": "33",
+      "time": {
+        "tz": "-04:00",
+        "stime": "2025-04-26 11:00:00",
+        "vtime": 1745679600
+      },
+      "station": {
+        "name": "St-Dominique, Montreal, Canada",
+        "geo": [45.512189, -73.566842],
+        "url": "canada/montreal/st-dominique",
+        "country": "CA"
+      }
+    },
+    {
+      "uid": 8594,
+      "aqi": "33",
+      "time": {
+        "tz": "-04:00",
+        "stime": "2025-04-26 11:00:00",
+        "vtime": 1745679600
+      },
+      "station": {
+        "name": "Verdun, Montreal, Canada",
+        "geo": [45.472854, -73.57296],
+        "url": "canada/montreal/verdun",
+        "country": "CA"
+      }
+    },
+    {
+      "uid": 5463,
+      "aqi": "30",
+      "time": {
+        "tz": "-04:00",
+        "stime": "2025-04-26 11:00:00",
+        "vtime": 1745679600
+      },
+      "station": {
+        "name": "Hochelaga-Maisonneuve, Montreal, Canada",
+        "geo": [45.539928, -73.540388],
+        "url": "canada/montreal/hochelaga-maisonneuve",
+        "country": "CA"
+      }
+    },
+    {
+      "uid": 5465,
+      "aqi": "30",
+      "time": {
+        "tz": "-04:00",
+        "stime": "2025-04-26 11:00:00",
+        "vtime": 1745679600
+      },
+      "station": {
+        "name": "Maisonneuve, Montreal, Canada",
+        "geo": [45.501531, -73.574311],
+        "url": "canada/montreal/maisonneuve",
+        "country": "CA"
+      }
+    },
+    {
+      "uid": 8696,
+      "aqi": "27",
+      "time": {
+        "tz": "-04:00",
+        "stime": "2025-04-25 20:00:00",
+        "vtime": 1745625600
+      },
+      "station": {
+        "name": "Saint-Michel, Montreal, Canada",
+        "geo": [45.563697, -73.610447],
+        "url": "canada/montreal/saint-michel",
+        "country": "CA"
+      }
+    },
+    {
+      "uid": 8695,
+      "aqi": "27",
+      "time": {
+        "tz": "-04:00",
+        "stime": "2025-04-24 12:00:00",
+        "vtime": 1745510400
+      },
+      "station": {
+        "name": "Jardin Botanique, Montreal, Canada",
+        "geo": [45.56221, -73.571785],
+        "url": "canada/montreal/jardin-botanique",
+        "country": "CA"
+      }
+    },
+    {
+      "uid": 5461,
+      "aqi": "24",
+      "time": {
+        "tz": "-04:00",
+        "stime": "2025-04-26 10:00:00",
+        "vtime": 1745676000
+      },
+      "station": {
+        "name": "Caserne 17, Montreal, Canada",
+        "geo": [45.593325, -73.637328],
+        "url": "canada/montreal/caserne-17",
+        "country": "CA"
+      }
+    },
+    {
+      "uid": 8626,
+      "aqi": "23",
+      "time": {
+        "tz": "-04:00",
+        "stime": "2025-04-24 14:00:00",
+        "vtime": 1745517600
+      },
+      "station": {
+        "name": "Drummond, Montreal, Canada",
+        "geo": [45.497859, -73.573035],
+        "url": "canada/montreal/drummond",
+        "country": "CA"
+      }
+    },
+    {
+      "uid": 8596,
+      "aqi": "23",
+      "time": {
+        "tz": "-04:00",
+        "stime": "2025-04-24 14:00:00",
+        "vtime": 1745517600
+      },
+      "station": {
+        "name": "Parc Pilon, Montreal, Canada",
+        "geo": [45.594576, -73.641535],
+        "url": "canada/montreal/parc-pilon",
+        "country": "CA"
+      }
+    },
+    {
+      "uid": 10716,
+      "aqi": "21",
+      "time": {
+        "tz": "-04:00",
+        "stime": "2025-04-26 09:00:00",
+        "vtime": 1745672400
+      },
+      "station": {
+        "name": "Roberval, York, Montreal, Canada",
+        "geo": [45.464611, -73.582583],
+        "url": "canada/montreal/york/roberval",
+        "country": "CA"
+      }
+    },
+    {
+      "uid": 8628,
+      "aqi": "-",
+      "time": {
+        "tz": "-04:00",
+        "stime": "2025-04-25 23:00:00",
+        "vtime": 1745636400
+      },
+      "station": {
+        "name": "Ontario, Montreal, Canada",
+        "geo": [45.52055, -73.563222],
+        "url": "canada/montreal/ontario",
+        "country": "CA"
+      }
+    },
+    {
+      "uid": 5462,
+      "aqi": "-",
+      "time": { "tz": "-04:00", "stime": "1970-01-01 00:00:00", "vtime": 0 },
+      "station": {
+        "name": "Duncan, Montreal, Canada",
+        "geo": [45.4660102, -73.6336838],
+        "url": "canada/montreal/duncan",
+        "country": "CA"
+      }
+    },
+    {
+      "uid": 8625,
+      "aqi": "30",
+      "time": {
+        "tz": "-04:00",
+        "stime": "2025-04-26 11:00:00",
+        "vtime": 1745679600
+      },
+      "station": {
+        "name": "Anjou, Montreal, Canada",
+        "geo": [45.602846, -73.558874],
+        "url": "canada/montreal/anjou"
+      }
+    },
+    {
+      "uid": 8627,
+      "aqi": "21",
+      "time": {
+        "tz": "-04:00",
+        "stime": "2025-04-26 03:00:00",
+        "vtime": 1745650800
+      },
+      "station": {
+        "name": "Dorval, Montreal, Canada",
+        "geo": [45.439119, -73.7333],
+        "url": "canada/montreal/dorval"
+      }
+    },
+    {
+      "uid": 5460,
+      "aqi": "21",
+      "time": {
+        "tz": "-04:00",
+        "stime": "2025-04-26 06:00:00",
+        "vtime": 1745661600
+      },
+      "station": {
+        "name": "Chénier, Montreal, Canada",
+        "geo": [45.60176, -73.541992],
+        "url": "canada/montreal/chenier"
+      }
+    },
+    {
+      "uid": 5466,
+      "aqi": "24",
+      "time": {
+        "tz": "-04:00",
+        "stime": "2025-04-25 10:00:00",
+        "vtime": 1745589600
+      },
+      "station": {
+        "name": "Aéroport de Montréal, Montreal, Canada",
+        "geo": [45.468297, -73.741185],
+        "url": "canada/montreal/aeroport-de-montreal"
+      }
+    },
+    {
+      "uid": 5459,
+      "aqi": "21",
+      "time": {
+        "tz": "-04:00",
+        "stime": "2025-04-26 11:00:00",
+        "vtime": 1745679600
+      },
+      "station": {
+        "name": "Saint-Jean-Baptiste, Montreal, Canada",
+        "geo": [45.641026, -73.499682],
+        "url": "canada/montreal/saint-jean-baptiste"
+      }
+    },
+    {
+      "uid": 5468,
+      "aqi": "27",
+      "time": {
+        "tz": "-04:00",
+        "stime": "2025-04-26 11:00:00",
+        "vtime": 1745679600
+      },
+      "station": {
+        "name": "Sainte-Anne-de-Bellevue, Montreal, Canada",
+        "geo": [45.426509, -73.928944],
+        "url": "canada/montreal/sainte-anne-de-bellevue"
+      }
+    }
+  ]
+}
