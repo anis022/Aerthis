@@ -21,3 +21,5 @@ def db_find_element(db_name: str, collection_name: str, query: dict):
     db = client[db_name]
     collection = db[collection_name]
     return collection.find_one(query)
+
+
