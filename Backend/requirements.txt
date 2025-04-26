@@ -3,3 +3,4 @@ certifi
 flask
 flask_cors
 dotenv
+pandas
