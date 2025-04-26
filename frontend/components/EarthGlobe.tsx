@@ -7,22 +7,20 @@ const EarthGlobe = () => {
   const globeEl = useRef<any>(null);
   const [globeReady, setGlobeReady] = useState(false);
   const [showOverlay, setShowOverlay] = useState(true);
-  const isMounted = useRef(true); // Add this ref to track mount status
-
-  const ANIMATION_DURATION = 500; // Duration in milliseconds - doesnt work but its here for future reference
-
-  const handleGlobeReady = useCallback(() => {
-    if (isMounted.current) { // Check if component is still mounted
-      setGlobeReady(true);
-      console.log('Globe is ready');
-    }
-  }, []);
+  const isMounted = useRef(false);
 
   useEffect(() => {
+    isMounted.current = true;
     return () => {
-      // This cleanup runs when component unmounts
       isMounted.current = false;
     };
+  }, []);
+
+  const handleGlobeReady = useCallback(() => {
+    if (isMounted.current) {
+      setGlobeReady(true);
+      setShowOverlay(false);
+    }
   }, []);
 
   useEffect(() => {
@@ -36,13 +34,7 @@ const EarthGlobe = () => {
         // Set initial point of view
         globeEl.current.pointOfView({ lat: 0, lng: 0, altitude: 1.5 }); // Adjust altitude for zoom
 
-        const timer = setTimeout(() => {
-          if (isMounted.current) { // Check before state update
-            setShowOverlay(false);
-          }
-        }, 1000);
-        
-        return () => clearTimeout(timer);
+        setShowOverlay(false); // Hide loading overlay
     }
   }, [globeReady]); // Re-run if globe becomes ready
 
