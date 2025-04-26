@@ -38,6 +38,7 @@ const EarthGlobe = () => {
         height={600} // Adjust as needed
         onGlobeReady={() => setGlobeReady(true)} // Callback when globe is ready
         onGlobeClick={handleGlobeClick} // Handle clicks on the globe
+        
         // --- Future Heatmap Prop ---
         // heatmapsData={[{ lat, lng, weight }, ...]}
         // heatmapPointRadius={0.5}
