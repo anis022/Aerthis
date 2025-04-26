@@ -2,7 +2,9 @@ from flask import Flask
 from flask_cors import CORS
 from dotenv import load_dotenv
 import os
-import db
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Create a Flask application instance
 app = Flask(__name__)
@@ -20,13 +22,9 @@ def add_cors_headers(response):
     response.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization'
     return response
 
-
-# Load environment variables from .env file
-load_dotenv()
-
+import db
 if __name__ == '__main__':
-    app.run(debug=True)
-    
+
     # Example usage
     db_name = "test_db"
     collection_name = "test_collection"
@@ -40,4 +38,5 @@ if __name__ == '__main__':
     # Find an element
     found_element = db.db_find_element(db_name, collection_name, query)
     print(f"Found Element: {found_element}")
-    
+
+    app.run(debug=True)
