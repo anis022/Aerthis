@@ -5,3 +5,4 @@ flask_cors
 dotenv
 pandas
 openpyxl
+reverse_geocode
