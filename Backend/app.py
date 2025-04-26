@@ -1,3 +1,4 @@
+import db
 from flask import Flask
 from flask_cors import CORS
 from dotenv import load_dotenv
@@ -22,7 +23,7 @@ def add_cors_headers(response):
     response.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization'
     return response
 
-import db
+
 if __name__ == '__main__':
 
     # Example usage
