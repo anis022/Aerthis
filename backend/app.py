@@ -91,20 +91,21 @@ def get_heatmap_data_test():
     return jsonify(filtered_data)
 
 
+@app.route('/search', methods=['POST'])
+def get_search():
+    print("UEHUEHRUHERUHEUHR")
+    data = request.get_json()
+    print('Received search:', data)
+
+    search_query = data.get('search')  # 'search' should match what you sent from React
+    print(f"User searched for: {search_query}")
+
+    # Do something useful here if you want (search a DB, filter data, etc.)
+
+    return jsonify({
+        "message": f"Search received for '{search_query}'",
+        "search": search_query
+    }), 200
 
 if __name__ == '__main__':
-    # Example usage
-    db_name = "test_db"
-    collection_name = "test_collection"
-    data = {"name": "John Doe", "age": 30}
-    query = {"name": "John Doe"}
-
-    # Create an element
-    result = db.db_create_element(db_name, collection_name, data)
-    print(f"Inserted ID: {result.inserted_id}")
-
-    # Find an element
-    found_element = db.db_find_element(db_name, collection_name, query)
-    print(f"Found Element: {found_element}")
-
     app.run(debug=True)

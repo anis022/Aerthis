@@ -1,5 +1,6 @@
 import EarthGlobe from '@/components/EarthGlobe'
 import EarthGlobeWrapper from '@/components/EarthGlobeWrapper'
+import SearchBar from '@/components/SearchBar';
 import React from 'react'
 
 const Home = async () => {
@@ -23,6 +24,7 @@ const Home = async () => {
 
   return (
     <div>
+      <SearchBar />
       <EarthGlobeWrapper heatmapData={heatmapData} />
     </div>
   )
