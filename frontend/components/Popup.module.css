@@ -3,7 +3,7 @@
     top: 120px;
     right: -280px;
     transform: translateX(-50%);
-    height:calc(75%);
+    height: calc(75%);
     width: calc(100% - 20px);
     max-width: 600px;
     padding: 10px;
