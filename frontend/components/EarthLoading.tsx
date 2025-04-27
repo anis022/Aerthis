@@ -5,7 +5,10 @@ import Image from 'next/image'
 const EarthLoading = () => {
   return (
     <div className={styles.loadingContainer}>
-        <Image priority unoptimized src="/Rotating_earth_animated_transparent.gif" alt="Loading Earth" width={200} height={200} />
+      <div className={styles.earth}>
+        <div className={styles.earthSurface}></div>
+      </div>
+        {/* <Image priority unoptimized src="/Rotating_earth_animated_transparent.gif" alt="Loading Earth" width={200} height={200} /> */}
       <p className={styles.loadingText}>Loading Earth...</p>
     </div>
   )

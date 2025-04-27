@@ -4,7 +4,7 @@ import Globe from 'react-globe.gl';
 import EarthLoading from './EarthLoading';
 import Popup from './Popup';
 
-const EarthGlobe = ({ heatmapData }: any) => {
+const EarthGlobe = ({ heatmapData, plasticData }: any) => {
   const globeEl = useRef<any>(null);
   const [globeReady, setGlobeReady] = useState(false);
   const [showOverlay, setShowOverlay] = useState(true);
@@ -13,7 +13,8 @@ const EarthGlobe = ({ heatmapData }: any) => {
 
   useEffect(() => {
     isMounted.current = true;
-    console.log("Heat map data:", heatmapData);
+    // console.log("Heat map data:", heatmapData);
+    // console.log("Plastic data:", plasticData);
     return () => {
       isMounted.current = false;
     };
@@ -101,6 +102,11 @@ const EarthGlobe = ({ heatmapData }: any) => {
         heatmapPointLat="lat"
         heatmapPointLng="lng"
         heatmapPointWeight="aqi"
+
+        // pointsData={[{"lat": 0, "lng": 0}, {"lat": 0, "lng": -10}]}
+        pointsData={plasticData}
+        pointAltitude={0}
+        pointColor={() => "purple"}
 
         // heatmapsTransitionDuration={3000}
         onHeatmapClick={handleHeatmapClick} // Handle clicks on the heatmap

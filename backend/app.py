@@ -91,6 +91,12 @@ def get_heatmap_data():
     data = json.load(open('data-processed/heatmap.json'))
     return jsonify(data["heatmap"])
 
+@app.route('/get-plastic-data', methods=['GET'])
+def get_plastic_data():
+    data = json.load(open('data-processed/plasticmap.json'))
+    # print(data["heatmap"])
+    return jsonify(data["heatmap"])
+
 
 @app.route('/search', methods=['POST'])
 def get_search():

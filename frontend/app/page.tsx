@@ -20,12 +20,29 @@ const Home = async () => {
       console.error('Error fetching heatmap data:', error);
     }
   })();
+
+  const plasticData = await (async () => {
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/get-plastic-data`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+      });
+      const data = await response.json();
+      // console.log('Plastic data:', data);
+      return data;
+    } catch (error) {
+      console.error('Error fetching plastic data:', error);
+    }
+  })();
   // console.log("Heat map data2:", heatmapData);
 
   return (
     <div>
       <SearchBar />
-      <EarthGlobeWrapper heatmapData={heatmapData} />
+      <EarthGlobeWrapper heatmapData={heatmapData} plasticData={plasticData} />
     </div>
   )
 }
