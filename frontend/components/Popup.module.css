@@ -27,4 +27,10 @@
     width: 25%;
     height: 95%;
     z-index: 30;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
