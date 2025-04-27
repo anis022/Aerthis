@@ -1,15 +1,32 @@
 import React from 'react'
 import styles from './Popup.module.css';
 
+interface PopupData {
+  "Air Quality Index": number;
+  "Biggest Air Polluant": string;
+  "Country": string;
+  "Disaster Spending": number;
+  "Dominant Pollutants": string;
+  "GDP": number;
+  "Percentage of GDP used on disaster spending": number;
+  "Plastic Pollution": number;
+  "Recap of Pollution": string;
+  "Solution Suggestion": string;
+  "Temperature Difference": number;
+}
+
 const Popup = ({ jsonData }: { jsonData: any}) => {
-  const country: string = (jsonData) ? jsonData["Country"] : "No country selected";
-  const GDP = (jsonData) ? jsonData["GDP"] : "-";
-  const percentageGDPusedOnDisasterSpending = (jsonData) ? jsonData["Percentage of GDP used on disaster spending"] : "-";
-  const solution = (jsonData) ? jsonData["Solution Suggestion"] : "-";
-  const disasterSpending = (jsonData) ? jsonData["Disaster Spending"] : "-";
-  const dominantPollutants = (jsonData) ? jsonData["Dominant Pollutants"] : "-";
-  const recapOfPollution = (jsonData) ? jsonData["Recap of Pollution"] : "-";
-  const plasticPollution = (jsonData) ? jsonData["Plastic Pollution"] : "-";
+  const country = jsonData?.["Country"] ?? "No country selected";
+  const GDP = jsonData?.["GDP"]?.toLocaleString() ?? "-";
+  const disasterSpending = jsonData?.["Disaster Spending"]?.toLocaleString() ?? "-";
+  const percentageGDPusedOnDisasterSpending = jsonData?.["Percentage of GDP used on disaster spending"]?.toLocaleString(undefined, { style: 'percent', minimumFractionDigits: 2 }) ?? "-";
+  const dominantPollutants = jsonData?.["Dominant Pollutants"] ?? "-";
+  const plasticPollution = jsonData?.["Plastic Pollution"]?.toLocaleString() ?? "-";
+  const recapOfPollution = jsonData?.["Recap of Pollution"] ?? "-";
+  const solution = jsonData?.["Solution Suggestion"] ?? "-";
+  const aqi = jsonData?.["Air Quality Index"] ?? "-";
+  const biggestPollutant = jsonData?.["Biggest Air Polluant"] ?? "-";
+  const temperatureDiff = jsonData?.["Temperature Difference"]?.toFixed(2) ?? "-";
 
   return (
     <div className={`${styles.popupContainer} flex items-center justify-end`} >
