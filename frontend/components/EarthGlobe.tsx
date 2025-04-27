@@ -52,6 +52,7 @@ const EarthGlobe = ({ heatmapData, plasticData }: any) => {
   };
 
   const handleClick = (lat: number, lng: number) => {
+    globeEl.current.pointOfView({ lat: lat, lng: lng, altitude: 1 }, 1000);
     console.log(`Clicked at Latitude: ${lat}, Longitude: ${lng}`);
     // You can set state or perform other actions here
     const response = fetch(`${process.env.NEXT_PUBLIC_API_URL}/get-geo-data`, {
