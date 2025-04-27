@@ -74,17 +74,13 @@ def get_geo_data():
 
 @app.route('/search', methods=['POST'])
 def get_search():
-    print("UEHUEHRUHERUHEUHR")
     data = request.get_json()
     print('Received search:', data)
 
     search_query = data.get('search')  # 'search' should match what you sent from React
-    print(f"User searched for: {search_query}")
-
     # Do something useful here if you want (search a DB, filter data, etc.)
 
     return jsonify({
-        "message": f"Search received for '{search_query}'",
         "search": search_query
     }), 200
 
