@@ -3,6 +3,8 @@ from flask import Flask
 from flask_cors import CORS
 from dotenv import load_dotenv
 import os
+import reverse_geocode
+
 
 # Load environment variables from .env file
 load_dotenv()
@@ -22,6 +24,18 @@ def add_cors_headers(response):
     response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
     response.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization'
     return response
+
+# route that will get longitude and lattitude as args
+
+
+@app.route('/', methods=['GET'])
+def get_geo_data(lat, lng):
+    # info for the popup on the map
+
+    info_dict = {
+        "aqi": 2
+    }
+    return
 
 
 if __name__ == '__main__':
