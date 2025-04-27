@@ -4,14 +4,14 @@ import React from "react";
 import "./SearchBar.css";
 import { FaSearch } from "react-icons/fa";
 
-const SearchBar = () => {
+const SearchBar = ({ handleSearch }: any) => {
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault(); // Prevents page reload
 
     const formData = new FormData(event.currentTarget);
     const search = formData.get("search");
 
-    const response = await fetch("http://localhost:5000/search", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/get-coordinates`, {
       method: "POST",
       body: JSON.stringify({ search }),
       headers: {
@@ -21,9 +21,10 @@ const SearchBar = () => {
     });
 
     const data = await response.json();
+    console.log(data.lat)
     if (response.ok) {
-      alert("Searched");
-      console.log(data);
+      console.log("Searched :", data);
+      handleSearch(data);
     } else {
       alert("Search failed: " + data.message);
     }
@@ -39,7 +40,7 @@ const SearchBar = () => {
               type="text"
               className="search-input"
               name="search"
-              placeholder="Look up a country"
+              placeholder="Look up a location"
               required
             />
           </div>

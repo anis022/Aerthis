@@ -1,8 +1,9 @@
 'use client'
-import React, { useState, useEffect, useRef, useCallback, Suspense } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Globe from 'react-globe.gl';
 import EarthLoading from './EarthLoading';
 import Popup from './Popup';
+import SearchBar from './SearchBar';
 
 const EarthGlobe = ({ heatmapData, plasticData }: any) => {
   const globeEl = useRef<any>(null);
@@ -36,7 +37,7 @@ const EarthGlobe = ({ heatmapData, plasticData }: any) => {
         // globeEl.current.controls().autoRotateSpeed = 0.2;
 
         // Set initial point of view
-        globeEl.current.pointOfView({ lat: 32, lng: -55, altitude: 1.5 }); // Adjust altitude for zoom
+        globeEl.current.pointOfView({ lat: 32, lng: -55, altitude: 1.5 }, 1500); // Adjust altitude for zoom
 
         setShowOverlay(false); // Hide loading overlay
     }
@@ -66,10 +67,16 @@ const EarthGlobe = ({ heatmapData, plasticData }: any) => {
       console.log(data);
       setJsonData(data);
       // Handle the response data as needed
-    })
-
-
+    });
   }
+
+  const handleSearch = (data: any) => {
+    console.log("Handle search data :", data['lat']);
+    const lat = (data.lat);
+    const lng = (data.lng);
+    handleClick(lat, lng);
+    globeEl.current.pointOfView({ lat: lat, lng: lng, altitude: 1 }, 1000);
+  };
 
 
   return (
@@ -79,6 +86,7 @@ const EarthGlobe = ({ heatmapData, plasticData }: any) => {
           <EarthLoading />
         </div>
       )}
+      <SearchBar handleSearch={handleSearch} />
       <Popup jsonData={jsonData} />
       <Globe
         ref={globeEl}

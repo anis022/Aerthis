@@ -97,9 +97,27 @@ def get_plastic_data():
     # print(data["heatmap"])
     return jsonify(data["heatmap"])
 
+@app.route('/get-coordinates', methods=['POST'])
+def get_coordinates():
+    data = request.get_json()
+    print('Received search:', data)
 
-@app.route('/search', methods=['POST'])
-def get_search():
+    search_query = data.get('search')  # 'search' should match what you sent from React
+    coords = generate_coordinates_response(search_query)
+
+    coords_json = json.loads(coords)
+
+    filtered_cords = {
+        'lat': float(coords_json['lat']),
+        'lng': float(coords_json['lng'])
+    }
+    print("COORDS:", filtered_cords)
+
+    return jsonify(filtered_cords)
+    
+
+# @app.route('/search', methods=['POST'])
+# def get_search():
     data = request.get_json()
     print('Received search:', data)
 
@@ -109,7 +127,7 @@ def get_search():
     coords = generate_coordinates_response(search_query)
     coords = json.loads(coords)
     coords = (float(coords['lat']), float(coords['lng']))
-    print(coords)
+    # print(coords)
     return get_data(coords)
 
 if __name__ == '__main__':

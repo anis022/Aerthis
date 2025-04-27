@@ -7,13 +7,18 @@
     max-width: 600px;
     padding: 0 10px;
     box-sizing: border-box;
+<<<<<<< HEAD
+    z-index: 40;
+=======
     z-index: 20;
+    animation: fadeIn 500ms ease-in-out;
+>>>>>>> f5f46d9f6ed703461806d4b9561eb6df722f6d92
 }
 
 .search-bar {
     display: flex;
     align-items: center;
-    background: rgba(255, 255, 255, 0.2); /* Frosted glass effect */
+    background: rgba(0, 0, 0, 0.2); /* Frosted glass effect */
     backdrop-filter: blur(30px);
     border-radius: 25px; /* Pill shape */
     border: 2px solid rgba(255, 255, 255, 0.7);
@@ -40,4 +45,14 @@
 
 .search-input::placeholder {
     color: rgba(255, 255, 255, 0.7);
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
