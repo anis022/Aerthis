@@ -26,8 +26,6 @@ def add_cors_headers(response):
     return response
 
 # route that will get longitude and lattitude as args
-
-
 @app.route('/', methods=['GET'])
 def get_geo_data(lat, lng):
     # info for the popup on the map
@@ -38,8 +36,8 @@ def get_geo_data(lat, lng):
     return
 
 
-if __name__ == '__main__':
 
+if __name__ == '__main__':
     # Example usage
     db_name = "test_db"
     collection_name = "test_collection"
