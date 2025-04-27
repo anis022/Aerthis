@@ -40,7 +40,7 @@ const SearchBar = ({ handleSearch }: any) => {
               type="text"
               className="search-input"
               name="search"
-              placeholder="Look up a country"
+              placeholder="Look up a location"
               required
             />
           </div>
