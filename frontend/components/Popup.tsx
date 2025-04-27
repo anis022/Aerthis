@@ -9,6 +9,7 @@ const Popup = ({ jsonData }: { jsonData: any}) => {
   const disasterSpending = (jsonData) ? jsonData["Disaster Spending"] : "-";
   const dominantPollutants = (jsonData) ? jsonData["Dominant Pollutants"] : "-";
   const recapOfPollution = (jsonData) ? jsonData["Recap of Pollution"] : "-";
+  const plasticPollution = (jsonData) ? jsonData["Plastic Pollution"] : "-";
 
   return (
     <div className={`${styles.popupContainer} flex items-center justify-end`} >

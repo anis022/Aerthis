@@ -18,8 +18,9 @@ def generate_pop_up_response(prompt: str):
     3. Annual disaster spending - Required value
     4. Percentage of GDP used on disaster spending - Required percentage
     5. List the dominant air pollutants - Required list
-    6. Provide a brief recap of pollution status - Required summary
-    7. Specific solution suggestions - Required actionable items
+    6. Total of plastic (in tons) produced per year - Required numerical value
+    7. Provide a brief recap of pollution status - Required summary
+    8. Specific solution suggestions - Required actionable items
     
     Format as JSON with ALL fields populated. If exact data is not available, provide reasonable estimates based on regional data.
     """
@@ -39,16 +40,17 @@ def generate_pop_up_response(prompt: str):
         response_mime_type="application/json",
         response_schema=genai.types.Schema(
             type=genai.types.Type.OBJECT,
-            required=["Country", "GDP", "Disaster Spending", "Percentage of GDP used on disaster spending", "Dominant Pollutants", "Recap of pollutants", "Solution Suggestion"],
             properties={
                 "Country": genai.types.Schema(type=genai.types.Type.STRING),
                 "GDP": genai.types.Schema(type=genai.types.Type.NUMBER),
                 "Disaster Spending": genai.types.Schema(type=genai.types.Type.STRING),
                 "Percentage of GDP used on disaster spending": genai.types.Schema(type=genai.types.Type.STRING),
                 "Dominant Pollutants": genai.types.Schema(type=genai.types.Type.STRING),
-                "Recap of pollution": genai.types.Schema(type=genai.types.Type.STRING),
+                "Plastic Pollution": genai.types.Schema(type=genai.types.Type.NUMBER),
+                "Recap of Pollution": genai.types.Schema(type=genai.types.Type.STRING),
                 "Solution Suggestion": genai.types.Schema(type=genai.types.Type.STRING),
             },
+            required=["Country", "GDP", "Disaster Spending", "Percentage of GDP used on disaster spending", "Dominant Pollutants", "Plastic Pollution", "Recap of Pollution", "Solution Suggestion"],
         ),
     )
 
