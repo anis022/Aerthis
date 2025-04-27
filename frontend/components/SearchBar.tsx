@@ -11,7 +11,7 @@ const SearchBar = ({ handleSearch }: any) => {
     const formData = new FormData(event.currentTarget);
     const search = formData.get("search");
 
-    const response = await fetch("http://localhost:5000/search", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/get-coordinates`, {
       method: "POST",
       body: JSON.stringify({ search }),
       headers: {
@@ -21,6 +21,7 @@ const SearchBar = ({ handleSearch }: any) => {
     });
 
     const data = await response.json();
+    console.log(data.lat)
     if (response.ok) {
       console.log("Searched :", data);
       handleSearch(data);

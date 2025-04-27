@@ -70,8 +70,12 @@ const EarthGlobe = ({ heatmapData, plasticData }: any) => {
     });
   }
 
-  const handleSearch = () => {
-    console.log("Search button clicked");
+  const handleSearch = (data: any) => {
+    console.log("Handle search data :", data['lat']);
+    const lat = (data.lat);
+    const lng = (data.lng);
+    handleClick(lat, lng);
+    globeEl.current.pointOfView({ lat: lat, lng: lng, altitude: 1.5 });
   };
 
 
