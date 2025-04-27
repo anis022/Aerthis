@@ -21,7 +21,9 @@
     padding: 20px;
     box-sizing: border-box;
     width: 100%;
-    height: calc(100%);
+    height: calc(100% - 40px);
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .popup li {
