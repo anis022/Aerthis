@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 import os
 import reverse_geocode
 
+
 # Load environment variables from .env file
 load_dotenv()
 
@@ -25,10 +26,13 @@ def add_cors_headers(response):
     return response
 
 # route that will get longitude and lattitude as args
+
+
 @app.route('/', methods=['GET'])
 def get_geo_data(lat, lng):
     # info for the popup on the map
     return
+
 
 if __name__ == '__main__':
 
