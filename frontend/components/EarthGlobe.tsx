@@ -37,7 +37,7 @@ const EarthGlobe = ({ heatmapData, plasticData }: any) => {
         // globeEl.current.controls().autoRotateSpeed = 0.2;
 
         // Set initial point of view
-        globeEl.current.pointOfView({ lat: 32, lng: -55, altitude: 1.5 }); // Adjust altitude for zoom
+        globeEl.current.pointOfView({ lat: 32, lng: -55, altitude: 1.5 }, 1500); // Adjust altitude for zoom
 
         setShowOverlay(false); // Hide loading overlay
     }
@@ -75,7 +75,7 @@ const EarthGlobe = ({ heatmapData, plasticData }: any) => {
     const lat = (data.lat);
     const lng = (data.lng);
     handleClick(lat, lng);
-    globeEl.current.pointOfView({ lat: lat, lng: lng, altitude: 1.5 });
+    globeEl.current.pointOfView({ lat: lat, lng: lng, altitude: 1 }, 1000);
   };
 
 
