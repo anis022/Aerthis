@@ -21,7 +21,7 @@ const SearchBar = ({ handleSearch }: any) => {
     });
 
     const data = await response.json();
-    console.log(data.lat)
+    // console.log(data.lat)
     if (response.ok) {
       console.log("Searched :", data);
       handleSearch(data);

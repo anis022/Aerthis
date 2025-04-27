@@ -58,13 +58,19 @@ def generate_pop_up_response(prompt: str):
     # print(response)
 
 def generate_coordinates_response(prompt: str):
+    formatted_prompt = f"""
+    The user inputed the following: {prompt}
+    To which location does this refer to, is it tied to a specific location? Provide the latitude and longitude of the location.
+    If the query is completely unrelated and no location can be guessed from it, return an empty {{}}.
+    """
+
     client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
     model = "gemini-2.0-flash"
     contents = [ 
         types.Content(
             role="user",
             parts=[
-                types.Part.from_text(text=prompt),
+                types.Part.from_text(text=formatted_prompt),
             ],
         ),
     ]
@@ -86,6 +92,7 @@ def generate_coordinates_response(prompt: str):
         config=generate_content_config,
     )
     
+    print("Guessed coordinates: ", response.text)
     return response.text  # ✅ If response has .text
 
 if __name__ == "__main__":

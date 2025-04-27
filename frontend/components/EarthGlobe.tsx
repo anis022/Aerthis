@@ -71,6 +71,10 @@ const EarthGlobe = ({ heatmapData, plasticData }: any) => {
   }
 
   const handleSearch = (data: any) => {
+    if (!data.lat) {
+      alert("No country was found.");
+      return;
+    }
     console.log("Handle search data :", data['lat']);
     const lat = (data.lat);
     const lng = (data.lng);

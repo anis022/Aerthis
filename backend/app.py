@@ -108,6 +108,11 @@ def get_coordinates():
 
     coords_json = json.loads(coords)
 
+    print(len(coords_json.keys()))
+    if (len(coords_json.keys()) == 0):
+        print("No coords found")
+        return "{}"
+
     filtered_cords = {
         'lat': float(coords_json['lat']),
         'lng': float(coords_json['lng'])
