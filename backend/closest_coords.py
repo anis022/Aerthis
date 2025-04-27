@@ -24,7 +24,7 @@ def find_closest_location_and_give_aqi(lat, lon):
     with open('data-processed/aqi.json', 'r') as file:
         json_data = json.load(file)
     # <--- IMPORTANT: we access 'data' list
-    data_list = json_data.get('data', [])
+    data_list = json_data.get('aqi', [])
     
     min_distance = float('inf')
     closest = None
@@ -32,7 +32,6 @@ def find_closest_location_and_give_aqi(lat, lon):
     for entry in data_list:
         entry_lat = entry.get('lat')
         entry_lng = entry.get('lng')
-
         if entry_lat is not None and entry_lng is not None:
             distance = haversine(lat, lon, entry_lat, entry_lng)
             if distance < min_distance:
