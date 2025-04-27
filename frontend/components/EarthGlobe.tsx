@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef, useCallback, Suspense } from 'react';
 import Globe from 'react-globe.gl';
 import EarthLoading from './EarthLoading';
+import Popup from './Popup';
 
 const EarthGlobe = ({ heatmapData }: any) => {
   const globeEl = useRef<any>(null);
@@ -34,31 +35,21 @@ const EarthGlobe = ({ heatmapData }: any) => {
         // globeEl.current.controls().autoRotateSpeed = 0.2;
 
         // Set initial point of view
-        globeEl.current.pointOfView({ lat: 0, lng: 0, altitude: 1.5 }); // Adjust altitude for zoom
+        globeEl.current.pointOfView({ lat: 32, lng: -55, altitude: 1.5 }); // Adjust altitude for zoom
 
         setShowOverlay(false); // Hide loading overlay
     }
   }, [globeReady]); // Re-run if globe becomes ready
 
   const handleGlobeClick = ({ lat, lng }: { lat: number; lng: number }, event: Event) => {
-    console.log(`Clicked at Latitude: ${lat}, Longitude: ${lng}`);
-    // You can set state or perform other actions here
-    const response = fetch(`${process.env.NEXT_PUBLIC_API_URL}/get-geo-data`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ lat, lng }),
-      credentials: 'include',
-    }).then((res) => {
-      return res.json()
-    }).then((data) => {
-      console.log(data);
-      // Handle the response data as needed
-    })
+    handleClick(lat, lng);
   };
 
   const handleHeatmapClick = (heatmap: any, event: Event, { lat, lng, altitude }: { lat: number; lng: number, altitude: number }) => {
+    handleClick(lat, lng);
+  };
+
+  const handleClick = (lat: number, lng: number) => {
     console.log(`Clicked at Latitude: ${lat}, Longitude: ${lng}`);
     // You can set state or perform other actions here
     const response = fetch(`${process.env.NEXT_PUBLIC_API_URL}/get-geo-data`, {
@@ -74,7 +65,9 @@ const EarthGlobe = ({ heatmapData }: any) => {
       console.log(data);
       // Handle the response data as needed
     })
-  };
+
+
+  }
 
 
   return (
@@ -84,6 +77,7 @@ const EarthGlobe = ({ heatmapData }: any) => {
           <EarthLoading />
         </div>
       )}
+      <Popup />
       <Globe
         ref={globeEl}
         globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg" // Basic globe texture
