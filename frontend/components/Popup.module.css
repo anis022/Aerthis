@@ -53,6 +53,7 @@
 }
 
 .statTitle {
+    color: rgb(216, 216, 146);
     font-weight: bold;
 }
 
@@ -75,3 +76,18 @@
         opacity: 1;
     }
 }
+
+
+.popup::-webkit-scrollbar {
+    width: 10px; /* set the width of the scrollbar */
+    background-color: black; /* set the background color of the scrollbar */
+  }
+  
+  .popup::-webkit-scrollbar-thumb {
+    background-color: #ccc; /* set the background color of the scrollbar thumb */
+    border-radius: 10px; /* set the border radius of the scrollbar thumb */
+  }
+  
+  .popup::-webkit-scrollbar-thumb:hover {
+    background-color: #aaa; /* set the background color of the scrollbar thumb on hover */
+  }

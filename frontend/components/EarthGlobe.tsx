@@ -6,12 +6,13 @@ import Popup from './Popup';
 import SearchBar from './SearchBar';
 import { isAbsolute } from 'path';
 
-const EarthGlobe = ({ heatmapData, plasticData }: any) => {
+const EarthGlobe: React.FC<EarthGlobeProps> = ({ heatmapData, plasticData }) => {
   const globeEl = useRef<any>(null);
   const [globeReady, setGlobeReady] = useState(false);
   const [showOverlay, setShowOverlay] = useState(true);
   const [jsonData, setJsonData] = useState<any>(null);
   const isMounted = useRef(false);
+  
 
   useEffect(() => {
     isMounted.current = true;
