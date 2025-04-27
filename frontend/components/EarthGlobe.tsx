@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef, useCallback, Suspense } from 'react
 import Globe from 'react-globe.gl';
 import EarthLoading from './EarthLoading';
 
-const EarthGlobe = () => {
+const EarthGlobe = ({ heatmapData }: any) => {
   const globeEl = useRef<any>(null);
   const [globeReady, setGlobeReady] = useState(false);
   const [showOverlay, setShowOverlay] = useState(true);
@@ -12,6 +12,7 @@ const EarthGlobe = () => {
 
   useEffect(() => {
     isMounted.current = true;
+    console.log("Heat map data:", heatmapData);
     return () => {
       isMounted.current = false;
     };
@@ -75,15 +76,16 @@ const EarthGlobe = () => {
 
         width={window.innerWidth} // Full width
         height={window.innerHeight} // Full height
-        onGlobeReady={handleGlobeReady} // Callback when globe is ready
-        onGlobeClick={handleGlobeClick} // Handle clicks on the globe
         
         // --- Future Heatmap Prop ---
         heatmapsData={[[{"lat": 0, "lng": 0, "aqi": 1}, {"lat": 0, "lng": -10, "aqi": 2}]]} // Data for heatmap
-        // heatmapsData={heatmapData}
+        // heatmapsData={[heatmapData]}
         heatmapPointLat="lat"
         heatmapPointLng="lng"
         heatmapPointWeight="aqi"
+
+        onGlobeReady={handleGlobeReady} // Callback when globe is ready
+        onGlobeClick={handleGlobeClick} // Handle clicks on the globe
       />
     </div>
   );

@@ -1,17 +1,31 @@
-'use client'
-import EarthGlobe from '@/components/EarthGlobe';
-import EarthLoading from '@/components/EarthLoading';
-import dynamic from 'next/dynamic';
+import EarthGlobe from '@/components/EarthGlobe'
+import EarthGlobeWrapper from '@/components/EarthGlobeWrapper'
+import React from 'react'
 
-const DynamicEarthGlobe = dynamic(() => import('@/components/EarthGlobe'), {
-  ssr: false,
-  loading: () => <EarthLoading />, // Optional loading indicator
-});
+const Home = async () => {
+  const heatmapData = await (async () => {
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/get-heatmap-data-test`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+      });
+      const data = await response.json();
+      // console.log('Heatmap data:', data);
+      return data;
+    } catch (error) {
+      console.error('Error fetching heatmap data:', error);
+    }
+  })();
+  // console.log("Heat map data2:", heatmapData);
 
-export default function Home() {
   return (
     <div>
-      <DynamicEarthGlobe />
+      <EarthGlobeWrapper heatmapData={heatmapData} />
     </div>
-  );
+  )
 }
+
+export default Home
