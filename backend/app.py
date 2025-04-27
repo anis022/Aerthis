@@ -41,12 +41,17 @@ def get_data(coords):
 
     data_aqi = find_closest_location_and_give_aqi(lat, lng)
 
+    if gdp != "Not available" and dis != "Not available":
+        percentage_of_gdp = (dis / gdp) * 100
+    else:
+        percentage_of_gdp = "Not available"
+
     gemini_response = generate_pop_up_response(f"Country: {country_name}, GDP: {gdp}, Disaster Spending: {dis}, Temperature Difference: {tmp}, Air Quality Index: {data_aqi["aqi"]}, Biggest Air Polluant: {data_aqi["dom"]}")
     gemini_response = json.loads(gemini_response)
     gemini_response['Country'] = country_name
     gemini_response['GDP'] = gdp
     gemini_response['Disaster Spending'] = dis
-    gemini_response['Percentage of GDP used on disaster spending'] = dis / gdp * 100
+    gemini_response['Percentage of GDP used on disaster spending'] = percentage_of_gdp
     gemini_response['Temperature Difference'] = tmp
     gemini_response['Air Quality Index'] = data_aqi["aqi"]
     gemini_response['Biggest Air Polluant'] = data_aqi["dom"]
