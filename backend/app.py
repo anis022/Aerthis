@@ -90,6 +90,11 @@ def get_heatmap_data_test():
 
     return jsonify(filtered_data)
 
+@app.route('/get-heatmap-data', methods=['GET'])
+def get_heatmap_data():
+    data = json.load(open('data-processed/heatmap.json'))
+    return jsonify(data["heatmap"])
+
 
 @app.route('/search', methods=['POST'])
 def get_search():

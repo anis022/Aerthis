@@ -6,7 +6,7 @@ import React from 'react'
 const Home = async () => {
   const heatmapData = await (async () => {
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/get-heatmap-data-test`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/get-heatmap-data`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
