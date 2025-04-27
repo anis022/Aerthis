@@ -4,7 +4,7 @@ from flask_cors import CORS
 from dotenv import load_dotenv
 import os
 import reverse_geocode
-
+import pandas as pd
 
 # Load environment variables from .env file
 load_dotenv()
@@ -31,6 +31,10 @@ def add_cors_headers(response):
 @app.route('/', methods=['GET'])
 def get_geo_data(lat, lng):
     # info for the popup on the map
+    country_code_2_letter = reverse_geocode.search((lat, lng))['country_code']
+    code_data = pd.read_csv('data/isocode.csv')
+    country_code_3_letter = code_data.loc[code_data['A2'] == country_code_2_letter, 'A3'].values[0]
+    country_name = code_data.loc[code_data['A2'] == country_code_2_letter, 'Name'].values[0]
     return
 
 
