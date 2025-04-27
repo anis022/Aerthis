@@ -1,6 +1,4 @@
-import EarthGlobe from '@/components/EarthGlobe'
 import EarthGlobeWrapper from '@/components/EarthGlobeWrapper'
-import SearchBar from '@/components/SearchBar';
 import React from 'react'
 
 const Home = async () => {

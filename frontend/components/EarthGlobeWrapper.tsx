@@ -1,5 +1,4 @@
 'use client'
-import EarthGlobe from '@/components/EarthGlobe';
 import EarthLoading from '@/components/EarthLoading';
 import dynamic from 'next/dynamic';
 
