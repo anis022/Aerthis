@@ -48,10 +48,13 @@ const Popup = ({ jsonData }: { jsonData: any }) => {
   const solution = jsonData?.["Solution Suggestion"] ?? "-";
   const aqi = jsonData?.["Air Quality Index"] ?? "-";
   const biggestPollutant = jsonData?.["Biggest Air Polluant"] ?? "-";
-  const temperatureDiff =
+  let temperatureDiff =
     new Intl.NumberFormat("en-US", { maximumSignificantDigits: 4 }).format(
       jsonData?.["Temperature Difference"],
     ) ?? "-";
+  if (temperatureDiff !== "-") {
+    temperatureDiff = `+${temperatureDiff}°C`;
+  }
 
   return (
     <div className={`${styles.popupContainer}`}>
@@ -72,7 +75,7 @@ const Popup = ({ jsonData }: { jsonData: any }) => {
             <span className={styles.statTitle}>
               Temperature Variation Since the 1950s:
             </span>{" "}
-            +{temperatureDiff} °C
+            +{temperatureDiff}
           </li>
           <li>
             <span className={styles.statTitle}>GDP:</span> {GDP}
