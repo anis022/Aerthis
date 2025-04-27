@@ -17,23 +17,41 @@ interface PopupData {
 
 const Popup = ({ jsonData }: { jsonData: any }) => {
   const country = jsonData?.["Country"] ?? "No country selected";
-  const GDP = jsonData?.["GDP"]?.toLocaleString() ?? "-";
-  const disasterSpending =
-    jsonData?.["Disaster Spending"]?.toLocaleString() ?? "-";
-  const percentageGDPusedOnDisasterSpending =
-    jsonData?.["Percentage of GDP used on disaster spending"]?.toLocaleString(
-      undefined,
-      { style: "percent", minimumFractionDigits: 2 },
+  let GDP =
+    new Intl.NumberFormat("en-US", { maximumSignificantDigits: 4 }).format(
+      jsonData?.["GDP"] / 1000000000,
     ) ?? "-";
+  if (GDP !== "-") {
+    GDP = `US$${GDP}B`;
+  }
+  let disasterSpending =
+    new Intl.NumberFormat("en-US", { maximumSignificantDigits: 4 }).format(
+      jsonData?.["Disaster Spending"] / 1000000,
+    ) ?? "-";
+  if (disasterSpending !== "-") {
+    disasterSpending = `US$${disasterSpending}M`;
+  }
+  let percentageGDPusedOnDisasterSpending =
+    new Intl.NumberFormat("en-US", { maximumSignificantDigits: 3 }).format(
+      jsonData?.["Percentage of GDP used on disaster spending"],
+    ) ?? "-";
+  if (percentageGDPusedOnDisasterSpending !== "-") {
+    percentageGDPusedOnDisasterSpending = `${percentageGDPusedOnDisasterSpending}%`;
+  }
   const dominantPollutants = jsonData?.["Dominant Pollutants"] ?? "-";
-  const plasticPollution =
+  let plasticPollution =
     jsonData?.["Plastic Pollution"]?.toLocaleString() ?? "-";
+  if (plasticPollution !== "-") {
+    plasticPollution = `${plasticPollution}t`;
+  }
   const recapOfPollution = jsonData?.["Recap of Pollution"] ?? "-";
   const solution = jsonData?.["Solution Suggestion"] ?? "-";
   const aqi = jsonData?.["Air Quality Index"] ?? "-";
   const biggestPollutant = jsonData?.["Biggest Air Polluant"] ?? "-";
   const temperatureDiff =
-    jsonData?.["Temperature Difference"]?.toFixed(2) ?? "-";
+    new Intl.NumberFormat("en-US", { maximumSignificantDigits: 4 }).format(
+      jsonData?.["Temperature Difference"],
+    ) ?? "-";
 
   return (
     <div className={`${styles.popupContainer}`}>
@@ -44,7 +62,24 @@ const Popup = ({ jsonData }: { jsonData: any }) => {
         <p className={styles.countryName}>{country}</p>
         <ul>
           <li>
+            <span className={styles.statTitle}>Air Quality:</span> {aqi}
+          </li>
+          <li>
+            <span className={styles.statTitle}>Top Pollutant:</span>{" "}
+            {biggestPollutant}
+          </li>
+          <li>
+            <span className={styles.statTitle}>
+              Temperature Variation Since the 1950s:
+            </span>{" "}
+            +{temperatureDiff} °C
+          </li>
+          <li>
             <span className={styles.statTitle}>GDP:</span> {GDP}
+          </li>
+          <li>
+            <span className={styles.statTitle}>Disaster Relief Spending:</span>{" "}
+            {disasterSpending}
           </li>
           <li>
             <span className={styles.statTitle}>
@@ -52,9 +87,21 @@ const Popup = ({ jsonData }: { jsonData: any }) => {
             </span>{" "}
             {percentageGDPusedOnDisasterSpending}
           </li>
+          <li>
+            <span className={styles.statTitle}>Dominant Pollutants:</span>{" "}
+            {dominantPollutants}
+          </li>
+          <li>
+            <span className={styles.statTitle}>
+              Plastic Waste Generated per Year:
+            </span>{" "}
+            {plasticPollution}
+          </li>
         </ul>
         <hr className={styles.thinHR}></hr>
         <p>
+          <span className={styles.statTitle}>Recap on Pollution:</span>{" "}
+          {recapOfPollution}
           <span className={styles.statTitle}>Future Prospects:</span> {solution}
         </p>
       </div>
