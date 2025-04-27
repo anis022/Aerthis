@@ -38,4 +38,4 @@ def find_closest_location_and_give_aqi(lat, lon):
                 min_distance = distance
                 closest = entry
 
-    return json.dumps(closest, indent=2)
+    return json.dumps(closest["aqi"], indent=2)

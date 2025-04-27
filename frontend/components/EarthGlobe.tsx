@@ -8,8 +8,8 @@ const EarthGlobe = ({ heatmapData }: any) => {
   const globeEl = useRef<any>(null);
   const [globeReady, setGlobeReady] = useState(false);
   const [showOverlay, setShowOverlay] = useState(true);
+  const [jsonData, setJsonData] = useState<any>(null);
   const isMounted = useRef(false);
-
 
   useEffect(() => {
     isMounted.current = true;
@@ -63,6 +63,7 @@ const EarthGlobe = ({ heatmapData }: any) => {
       return res.json()
     }).then((data) => {
       console.log(data);
+      setJsonData(data);
       // Handle the response data as needed
     })
 
@@ -77,7 +78,7 @@ const EarthGlobe = ({ heatmapData }: any) => {
           <EarthLoading />
         </div>
       )}
-      <Popup />
+      <Popup jsonData={jsonData} />
       <Globe
         ref={globeEl}
         globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg" // Basic globe texture

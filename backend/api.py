@@ -40,7 +40,8 @@ def generate_pop_up_response(prompt: str):
         contents=contents,
         config=generate_content_config,
     )
-
+    
+    print("Response:", response.text)
     return response.text  # ✅ If response has .text
     # Otherwise print the full response if you want to inspect it
     # print(response)
