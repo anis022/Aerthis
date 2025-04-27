@@ -12,6 +12,7 @@ const DynamicEarthGlobe = dynamic(() => import("@/components/EarthGlobe"), {
 export default function Home() {
   return (
     <div>
+      <SearchBar></SearchBar>
       <DynamicEarthGlobe />
     </div>
   );
