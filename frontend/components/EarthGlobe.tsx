@@ -58,6 +58,25 @@ const EarthGlobe = ({ heatmapData }: any) => {
     })
   };
 
+  const handleHeatmapClick = (heatmap: any, event: Event, { lat, lng, altitude }: { lat: number; lng: number, altitude: number }) => {
+    console.log(`Clicked at Latitude: ${lat}, Longitude: ${lng}`);
+    // You can set state or perform other actions here
+    const response = fetch(`${process.env.NEXT_PUBLIC_API_URL}/get-geo-data`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ lat, lng }),
+      credentials: 'include',
+    }).then((res) => {
+      return res.json()
+    }).then((data) => {
+      console.log(data);
+      // Handle the response data as needed
+    })
+  };
+
+
   return (
     <div>
       {showOverlay && (
@@ -78,11 +97,15 @@ const EarthGlobe = ({ heatmapData }: any) => {
         height={window.innerHeight} // Full height
         
         // --- Future Heatmap Prop ---
-        heatmapsData={[[{"lat": 0, "lng": 0, "aqi": 1}, {"lat": 0, "lng": -10, "aqi": 2}]]} // Data for heatmap
-        // heatmapsData={[heatmapData]}
+        // heatmapsData={[[{"lat": 0, "lng": 0, "aqi": 1}, {"lat": 0, "lng": -10, "aqi": 2}]]} // Data for heatmap
+        heatmapsData={[heatmapData]}
         heatmapPointLat="lat"
         heatmapPointLng="lng"
         heatmapPointWeight="aqi"
+
+        // heatmapsTransitionDuration={3000}
+        onHeatmapClick={handleHeatmapClick} // Handle clicks on the heatmap
+        enablePointerInteraction={true}
 
         onGlobeReady={handleGlobeReady} // Callback when globe is ready
         onGlobeClick={handleGlobeClick} // Handle clicks on the globe
