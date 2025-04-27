@@ -27,7 +27,7 @@ def generate_pop_up_response(prompt: str):
                 "Country": genai.types.Schema(type=genai.types.Type.STRING),
                 "GDP": genai.types.Schema(type=genai.types.Type.NUMBER),
                 "Disaster Spending": genai.types.Schema(type=genai.types.Type.STRING),
-                "Percentage of GDP used on disaster spending": genai.types.Schema(type=genai.types.Type.String),
+                "Percentage of GDP used on disaster spending": genai.types.Schema(type=genai.types.Type.STRING),
                 "Dominant Pollutants": genai.types.Schema(type=genai.types.Type.STRING),
                 "Recap of pollutants": genai.types.Schema(type=genai.types.Type.STRING),
                 "Solution Suggestion": genai.types.Schema(type=genai.types.Type.STRING),
