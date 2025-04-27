@@ -8,7 +8,7 @@ for station in aqi_data['aqi']:
     dict['heatmap'].append({
         "lat": station['lat'],
         "lng": station['lng'],
-        "data": {"aqi": station['aqi']}
+        "aqi": station['aqi'],
     })
 
 json.dump(dict, open('../data-processed/heatmap.json', 'w'), indent=None, separators=(',', ':'))
