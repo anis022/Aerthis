@@ -65,15 +65,9 @@ def add_cors_headers(response):
 def get_geo_data():
     if request.method == 'OPTIONS':
         return '', 200
-
-    print('Request method:', request.method)
-    print('Request headers:', dict(request.headers))
-
     data = request.get_json()
-    print('Received data:', data)
     lat = float(data.get('lat'))
     lng = float(data.get('lng'))
-    print(f"Received lat: {lat}, lng: {lng}")
     # info for the popup on the map
     coords= (lat, lng)
     return get_data(coords=coords)
@@ -103,13 +97,11 @@ def get_heatmap_data():
 @app.route('/get-plastic-data', methods=['GET'])
 def get_plastic_data():
     data = json.load(open('data-processed/plasticmap.json'))
-    # print(data["heatmap"])
     return jsonify(data["heatmap"])
 
 @app.route('/get-coordinates', methods=['POST'])
 def get_coordinates():
     data = request.get_json()
-    print('Received search:', data)
 
     search_query = data.get('search')  # 'search' should match what you sent from React
     coords = generate_coordinates_response(search_query)
@@ -120,24 +112,23 @@ def get_coordinates():
         'lat': float(coords_json['lat']),
         'lng': float(coords_json['lng'])
     }
-    print("COORDS:", filtered_cords)
 
     return jsonify(filtered_cords)
     
 
-# @app.route('/search', methods=['POST'])
-# def get_search():
-    data = request.get_json()
-    print('Received search:', data)
+# # @app.route('/search', methods=['POST'])
+# # def get_search():
+#     data = request.get_json()
+#     print('Received search:', data)
 
-    search_query = data.get('search')  # 'search' should match what you sent from React
-    # Do something useful here if you want (search a DB, filter data, etc.)
+#     search_query = data.get('search')  # 'search' should match what you sent from React
+#     # Do something useful here if you want (search a DB, filter data, etc.)
 
-    coords = generate_coordinates_response(search_query)
-    coords = json.loads(coords)
-    coords = (float(coords['lat']), float(coords['lng']))
-    # print(coords)
-    return get_data(coords)
+#     coords = generate_coordinates_response(search_query)
+#     coords = json.loads(coords)
+#     coords = (float(coords['lat']), float(coords['lng']))
+#     # print(coords)
+#     return get_data(coords)
 
 if __name__ == '__main__':
     app.run(debug=False)
