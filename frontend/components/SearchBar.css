@@ -7,12 +7,8 @@
     max-width: 600px;
     padding: 0 10px;
     box-sizing: border-box;
-<<<<<<< HEAD
     z-index: 40;
-=======
-    z-index: 20;
     animation: fadeIn 500ms ease-in-out;
->>>>>>> f5f46d9f6ed703461806d4b9561eb6df722f6d92
 }
 
 .search-bar {
@@ -46,7 +42,6 @@
 .search-input::placeholder {
     color: rgba(255, 255, 255, 0.7);
 }
-
 
 @keyframes fadeIn {
     from {
