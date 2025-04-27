@@ -90,7 +90,6 @@ def generate_coordinates_response(prompt: str):
         config=generate_content_config,
     )
     
-    print("Guessed coordinates: ", response.text)
     return response.text  # ✅ If response has .text
 
 if __name__ == "__main__":
