@@ -105,7 +105,8 @@ const Popup = ({ jsonData }: { jsonData: any }) => {
         <p>
           <span className={styles.statTitle}>Recap on Pollution:</span>{" "}
           {recapOfPollution}
-          <span className={styles.statTitle}>Future Prospects:</span> {solution}
+          <br/><span className={styles.statTitle}>Future Prospects:</span>{" "}
+          {solution}
         </p>
       </div>
     </div>
