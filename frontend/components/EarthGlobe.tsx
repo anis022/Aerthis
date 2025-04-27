@@ -9,6 +9,7 @@ const EarthGlobe = () => {
   const [showOverlay, setShowOverlay] = useState(true);
   const isMounted = useRef(false);
 
+
   useEffect(() => {
     isMounted.current = true;
     return () => {
@@ -56,7 +57,6 @@ const EarthGlobe = () => {
     })
   };
 
-
   return (
     <div>
       {showOverlay && (
@@ -79,9 +79,11 @@ const EarthGlobe = () => {
         onGlobeClick={handleGlobeClick} // Handle clicks on the globe
         
         // --- Future Heatmap Prop ---
-        // heatmapsData={[{ lat, lng, weight }, ...]}
-        // heatmapPointRadius={0.5}
-        // heatmapWeight="weight" // key in your data objects for weight
+        heatmapsData={[[{"lat": 0, "lng": 0, "aqi": 1}, {"lat": 0, "lng": -10, "aqi": 2}]]} // Data for heatmap
+        // heatmapsData={heatmapData}
+        heatmapPointLat="lat"
+        heatmapPointLng="lng"
+        heatmapPointWeight="aqi"
       />
     </div>
   );

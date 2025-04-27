@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 import os
 import reverse_geocode
 import pandas as pd
+import json
 
 # Load environment variables from .env file
 load_dotenv()
@@ -50,7 +51,24 @@ def get_geo_data():
         'country_name': country_name
     })
 
-print("Frontend URL:", os.getenv("FRONTEND_URL"))
+@app.route('/get-heatmap-data-test', methods=['GET'])
+def get_heatmap_data_test():
+    data = {"aqi": [
+        {"loc":"Sainte-Luce, Martinique, France","aqi":46,"lat":14.468867,"lng":-60.927389,"tim":"2025-04-26 18:00:00","src":"http://www.madininair.fr/","dom":"pm25","iaq":{"dew":{"v":23},"h":{"v":78},"no2":{"v":1.2},"o3":{"v":15.7},"p":{"v":1012},"pm10":{"v":30},"pm25":{"v":46},"t":{"v":27},"w":{"v":3.6},"wg":{"v":9.2}}},
+        {"loc":"Route Nationale 1, Les Abymes, Guadeloupe, France","aqi":22,"lat":16.254085,"lng":-61.53713,"tim":"2025-04-26 18:00:00","src":"https://www.gwadair.fr/","dom":"pm10","iaq":{"co":{"v":0.1},"dew":{"v":23},"h":{"v":78},"no2":{"v":5.8},"p":{"v":1013},"pm10":{"v":22},"t":{"v":27},"w":{"v":2.5}}},
+        {"loc":"Route Nationale 1, Les Abymes, Guadeloupe, France","aqi":22,"lat":16.254085,"lng":-61.53713,"tim":"2025-04-26 18:00:00","src":"https://www.gwadair.fr/","dom":"pm10","iaq":{"co":{"v":0.1},"dew":{"v":23},"h":{"v":78},"no2":{"v":5.8},"p":{"v":1013},"pm10":{"v":22},"t":{"v":27},"w":{"v":2.5}}},
+        {"loc":"Marigot, Saint-Martin, France","aqi":16,"lat":18.070114,"lng":-63.081481,"tim":"2025-04-26 17:00:00","src":"https://www.gwadair.fr/","dom":"pm25","iaq":{"dew":{"v":24},"h":{"v":88},"no2":{"v":10.1},"o3":{"v":8.9},"p":{"v":1014},"pm10":{"v":8},"pm25":{"v":16},"t":{"v":26},"w":{"v":2.5}}},
+        {"loc":"Burin, NewFoundland, Canada","aqi":15,"lat":47.098988,"lng":-55.198521,"tim":"2025-04-26 18:00:00","src":"https://www.mae.gov.nl.ca/env_protection/science/airmon/index.html","dom":"pm25","iaq":{"dew":{"v":2},"h":{"v":93},"no2":{"v":0.2},"o3":{"v":13.1},"p":{"v":1029},"pm10":{"v":7},"pm25":{"v":15},"t":{"v":3},"w":{"v":4.1},"wg":{"v":16.4}}},
+    ]}
+    json_data = json.dumps(data)
+    filtered_data = [
+        {'aqi': float(entry['aqi']), 'lat': float(entry['lat']), 'lng': float(entry['lng'])}
+        for entry in data['aqi']
+    ]
+
+    return jsonify(filtered_data)
+
+
 
 if __name__ == '__main__':
     # Example usage
