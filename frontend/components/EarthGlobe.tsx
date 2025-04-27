@@ -4,6 +4,7 @@ import Globe from 'react-globe.gl';
 import EarthLoading from './EarthLoading';
 import Popup from './Popup';
 import SearchBar from './SearchBar';
+import { isAbsolute } from 'path';
 
 const EarthGlobe = ({ heatmapData, plasticData }: any) => {
   const globeEl = useRef<any>(null);
@@ -93,41 +94,43 @@ const EarthGlobe = ({ heatmapData, plasticData }: any) => {
       )}
       <SearchBar handleSearch={handleSearch} />
       <Popup jsonData={jsonData} />
-      <Globe
-        ref={globeEl}
-        globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg" // Basic globe texture
-        bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png" // Optional: adds terrain texture
-        backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png" // Optional: star background
-        // globeImageUrl="world.200412.3x21600x10800.jpg"
+      <div style={{left: '-45%', position:'absolute', overflow:"hidden", width:'100wh', height:'100vh'}}>
+        <Globe
+          ref={globeEl}
+          globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg" // Basic globe texture
+          bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png" // Optional: adds terrain texture
+          backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png" // Optional: star background
+          // globeImageUrl="world.200412.3x21600x10800.jpg"
 
-        heatmapTopAltitude={0.1}
-        heatmapsTransitionDuration={3000}
-        
-        atmosphereColor="lightskyblue"
-        atmosphereAltitude={0.25}
+          heatmapTopAltitude={0.1}
+          heatmapsTransitionDuration={3000}
+          
+          atmosphereColor="lightskyblue"
+          atmosphereAltitude={0.25}
 
-        width={window.innerWidth} // Full width
-        height={window.innerHeight} // Full height
-        
-        // --- Future Heatmap Prop ---
-        // heatmapsData={[[{"lat": 0, "lng": 0, "aqi": 1}, {"lat": 0, "lng": -10, "aqi": 2}]]} // Data for heatmap
-        heatmapsData={[heatmapData]}
-        heatmapPointLat="lat"
-        heatmapPointLng="lng"
-        heatmapPointWeight="aqi"
+          width={window.innerWidth * 1.5} // Full width
+          height={window.innerHeight} // Full height
+          
+          // --- Future Heatmap Prop ---
+          // heatmapsData={[[{"lat": 0, "lng": 0, "aqi": 1}, {"lat": 0, "lng": -10, "aqi": 2}]]} // Data for heatmap
+          heatmapsData={[heatmapData]}
+          heatmapPointLat="lat"
+          heatmapPointLng="lng"
+          heatmapPointWeight="aqi"
 
-        // pointsData={[{"lat": 0, "lng": 0}, {"lat": 0, "lng": -10}]}
-        pointsData={plasticData}
-        pointAltitude={0}
-        pointColor={() => "purple"}
+          // pointsData={[{"lat": 0, "lng": 0}, {"lat": 0, "lng": -10}]}
+          pointsData={plasticData}
+          pointAltitude={0}
+          pointColor={() => "purple"}
 
-        // heatmapsTransitionDuration={3000}
-        onHeatmapClick={handleHeatmapClick} // Handle clicks on the heatmap
-        enablePointerInteraction={true}
+          // heatmapsTransitionDuration={3000}
+          onHeatmapClick={handleHeatmapClick} // Handle clicks on the heatmap
+          enablePointerInteraction={true}
 
-        onGlobeReady={handleGlobeReady} // Callback when globe is ready
-        onGlobeClick={handleGlobeClick} // Handle clicks on the globe
-      />
+          onGlobeReady={handleGlobeReady} // Callback when globe is ready
+          onGlobeClick={handleGlobeClick} // Handle clicks on the globe
+        />
+      </div>
     </div>
   );
 }
