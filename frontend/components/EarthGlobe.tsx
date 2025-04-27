@@ -89,6 +89,7 @@ const EarthGlobe = ({ heatmapData }: any) => {
         globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg" // Basic globe texture
         bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png" // Optional: adds terrain texture
         backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png" // Optional: star background
+        // globeImageUrl="world.200412.3x21600x10800.jpg"
         
         atmosphereColor="lightskyblue"
         atmosphereAltitude={0.25}
