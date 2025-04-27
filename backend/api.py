@@ -13,14 +13,10 @@ def generate_pop_up_response(prompt: str):
     Based on this location: {prompt}
     
     Generate a complete response with ALL of the following required information:
-    1. Country name - Required
-    2. GDP (in USD) - Required numerical value
-    3. Annual disaster spending - Required value
-    4. Percentage of GDP used on disaster spending - Required percentage
-    5. List the dominant air pollutants - Required list
-    6. Total of plastic (in tons) produced per year - Required numerical value
-    7. Provide a brief recap of pollution status - Required summary
-    8. Specific solution suggestions - Required actionable items
+    1. Description of the dominant pollutants in the air - Required summary
+    2. Total of plastic (in tons) produced per year - Required numerical value
+    3. Provide a brief recap of pollution status - Required summary
+    4. Specific solution suggestions - Required actionable items
     
     Format as JSON with ALL fields populated. If exact data is not available, provide reasonable estimates based on regional data.
     """
@@ -41,16 +37,12 @@ def generate_pop_up_response(prompt: str):
         response_schema=genai.types.Schema(
             type=genai.types.Type.OBJECT,
             properties={
-                "Country": genai.types.Schema(type=genai.types.Type.STRING),
-                "GDP": genai.types.Schema(type=genai.types.Type.NUMBER),
-                "Disaster Spending": genai.types.Schema(type=genai.types.Type.STRING),
-                "Percentage of GDP used on disaster spending": genai.types.Schema(type=genai.types.Type.STRING),
                 "Dominant Pollutants": genai.types.Schema(type=genai.types.Type.STRING),
                 "Plastic Pollution": genai.types.Schema(type=genai.types.Type.NUMBER),
                 "Recap of Pollution": genai.types.Schema(type=genai.types.Type.STRING),
                 "Solution Suggestion": genai.types.Schema(type=genai.types.Type.STRING),
             },
-            required=["Country", "GDP", "Disaster Spending", "Percentage of GDP used on disaster spending", "Dominant Pollutants", "Plastic Pollution", "Recap of Pollution", "Solution Suggestion"],
+            required=["Dominant Pollutants", "Plastic Pollution", "Recap of Pollution", "Solution Suggestion"],
         ),
     )
 
