@@ -5,3 +5,6 @@ flask-cors
 dotenv
 pandas
 openpyxl
+reverse_geocode
+google
+google.genai

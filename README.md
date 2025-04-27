@@ -1,7 +1,3 @@
-# Presentation notes
-## Intro
-- Our goal: EDUCATION
--
 # Aerthis
 ## Presentation notes
 ### Intro
