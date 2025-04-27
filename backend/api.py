@@ -14,7 +14,7 @@ def generate_pop_up_response(prompt: str):
         types.Content(
             role="user",
             parts=[
-                types.Part.from_text(text=prompt),
+                types.Part.from_text(text=f"{prompt} take this data about the country and generate a pop up response:\n1. Country name\n2. GDP\n3. Disaster spending\n4. Percentage of GDP used on disaster spending\n5. Dominant pollutants in the air\n6. Recap of pollutants\n7. Solution suggestion"),
             ],
         ),
     ]
@@ -27,11 +27,10 @@ def generate_pop_up_response(prompt: str):
                 "Country": genai.types.Schema(type=genai.types.Type.STRING),
                 "GDP": genai.types.Schema(type=genai.types.Type.NUMBER),
                 "Disaster Spending": genai.types.Schema(type=genai.types.Type.STRING),
-                "Percentage of GDP used on disaster spending": genai.types.Schema(type=genai.types.Type.NUMBER),
+                "Percentage of GDP used on disaster spending": genai.types.Schema(type=genai.types.Type.String),
                 "Dominant Pollutants": genai.types.Schema(type=genai.types.Type.STRING),
                 "Recap of pollutants": genai.types.Schema(type=genai.types.Type.STRING),
                 "Solution Suggestion": genai.types.Schema(type=genai.types.Type.STRING),
-                "Source": genai.types.Schema(type=genai.types.Type.STRING),
             },
         ),
     )

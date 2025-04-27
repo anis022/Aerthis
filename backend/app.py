@@ -6,7 +6,7 @@ import reverse_geocode
 import pandas as pd
 import json
 from closest_coords import find_closest_location_and_give_aqi
-from api import generate_coordinates_response
+from api import generate_coordinates_response, generate_pop_up_response
 
 # Load environment variables from .env file
 load_dotenv()
@@ -20,37 +20,28 @@ def get_data(coords):
     code_data = pd.read_csv('data/isocode.csv')
     country_code_3_letter = code_data.loc[code_data['A2'] == country_code_2_letter, 'A3'].values[0]
     country_name = code_data.loc[code_data['A2'] == country_code_2_letter, 'Name'].values[0]
-    print(f"Country code 2 letter: {country_code_2_letter}, Country code 3 letter: {country_code_3_letter}, Country name: {country_name}")
     #get the gdp
     gdp_data = json.load(open('data-processed/gdp.json'))
     try:
         gdp = gdp_data[country_code_3_letter]
     except Exception:
         gdp = "Not available"
-    print(f"GDP: {gdp}")
     #get the disaster spending
     dis_data = json.load(open('data-processed/disaster-spending.json'))
     try:
         dis = dis_data[country_code_3_letter]
     except Exception:
         dis = "Not available"
-    print(f"Disaster spending: {dis}")
     #get the temp diff
     tmp_data = json.load(open('data-processed/temp-diff.json'))
     try:
         tmp = -tmp_data[country_code_3_letter]
     except Exception:
         tmp = "Not available"
-    print(f"Temperature difference: {tmp}")
 
     data_aqi = find_closest_location_and_give_aqi(lat, lng)
-    return jsonify({
-        'country_name': country_name,
-        'gdp': gdp,
-        'disaster_spending': dis,
-        'temp_diff': tmp,
-        'aqi': data_aqi,
-    })
+    gemini_response = generate_pop_up_response(f"Country: {country_name}, GDP: {gdp}, Disaster Spending: {dis}, Temperature Difference: {tmp}, Air Quality Index: {data_aqi}")
+    return gemini_response
     
 @app.after_request
 def add_cors_headers(response):
