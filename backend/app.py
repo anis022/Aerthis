@@ -1,5 +1,5 @@
 import db
-from flask import Flask
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 from dotenv import load_dotenv
 import os
@@ -11,12 +11,8 @@ load_dotenv()
 
 # Create a Flask application instance
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": os.getenv("FRONTEND_URL")}},
-     supports_credentials=True)  # Enable CORS for all routes
 
 # Add CORS headers to all responses
-
-
 @app.after_request
 def add_cors_headers(response):
     response.headers['Access-Control-Allow-Origin'] = os.getenv("FRONTEND_URL")
@@ -26,16 +22,35 @@ def add_cors_headers(response):
     return response
 
 # route that will get longitude and lattitude as args
-@app.route('/', methods=['GET'])
-def get_geo_data(lat, lng):
+@app.route('/get-geo-data', methods=['POST'])
+def get_geo_data():
+    if request.method == 'OPTIONS':
+        return '', 200
+    
+    print('Request method:', request.method)
+    print('Request headers:', dict(request.headers))
+
+    data = request.get_json()
+    print('Received data:', data)
+    lat = data.get('lat')
+    lng = data.get('lng')
+    print(f"Received lat: {lat}, lng: {lng}")
+    return jsonify({
+        'lat': lat,
+        'lng': lng
+    })
     # info for the popup on the map
     country_code_2_letter = reverse_geocode.search((lat, lng))['country_code']
     code_data = pd.read_csv('data/isocode.csv')
     country_code_3_letter = code_data.loc[code_data['A2'] == country_code_2_letter, 'A3'].values[0]
     country_name = code_data.loc[code_data['A2'] == country_code_2_letter, 'Name'].values[0]
-    return
+    return jsonify({
+        'country_code_2_letter': country_code_2_letter,
+        'country_code_3_letter': country_code_3_letter,
+        'country_name': country_name
+    })
 
-
+print("Frontend URL:", os.getenv("FRONTEND_URL"))
 
 if __name__ == '__main__':
     # Example usage

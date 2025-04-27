@@ -1,7 +1,7 @@
 pymongo
 certifi
 flask
-flask_cors
+flask-cors
 dotenv
 pandas
 openpyxl

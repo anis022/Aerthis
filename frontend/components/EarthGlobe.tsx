@@ -41,6 +41,19 @@ const EarthGlobe = () => {
   const handleGlobeClick = ({ lat, lng }: { lat: number; lng: number }, event: Event) => {
     console.log(`Clicked at Latitude: ${lat}, Longitude: ${lng}`);
     // You can set state or perform other actions here
+    const response = fetch(`${process.env.NEXT_PUBLIC_API_URL}/get-geo-data`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ lat, lng }),
+      credentials: 'include',
+    }).then((res) => {
+      return res.json()
+    }).then((data) => {
+      console.log(data);
+      // Handle the response data as needed
+    })
   };
 
 
