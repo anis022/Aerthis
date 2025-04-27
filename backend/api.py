@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-def generate(prompt: str):
+def generate_pop_up_response(prompt: str):
     client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
     model = "gemini-2.0-flash"
@@ -42,10 +42,40 @@ def generate(prompt: str):
         config=generate_content_config,
     )
 
-    print(response.text)  # ✅ If response has .text
+    return response.text  # ✅ If response has .text
     # Otherwise print the full response if you want to inspect it
     # print(response)
 
+def generate_coordinates_response(prompt: str):
+    client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+    model = "gemini-2.0-flash"
+    contents = [ 
+        types.Content(
+            role="user",
+            parts=[
+                types.Part.from_text(text=prompt),
+            ],
+        ),
+    ]
+    
+    generate_content_config = types.GenerateContentConfig(
+        response_mime_type="application/json",
+        response_schema=genai.types.Schema(
+            type=genai.types.Type.OBJECT,
+            properties={
+                "lat": genai.types.Schema(type=genai.types.Type.NUMBER),
+                "lng": genai.types.Schema(type=genai.types.Type.NUMBER),
+            },
+        ),
+    )
+    
+    response = client.models.generate_content(
+        model=model,
+        contents=contents,
+        config=generate_content_config,
+    )
+    
+    return response.text  # ✅ If response has .text
 
 if __name__ == "__main__":
     generate(
