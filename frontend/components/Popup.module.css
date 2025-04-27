@@ -3,6 +3,7 @@
     top: 120px;
     right: -280px;
     transform: translateX(-50%);
+    height: calc(75%);
     width: calc(100% - 20px);
     max-width: 600px;
     padding: 10px;
@@ -21,7 +22,7 @@
     padding: 20px;
     box-sizing: border-box;
     width: 100%;
-    height: calc(100% - 40px);
+    height: calc(100%);
     overflow-x: hidden;
     overflow-y: auto;
 }
