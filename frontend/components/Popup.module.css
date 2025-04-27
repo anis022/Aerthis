@@ -1,0 +1,30 @@
+.popupContainer {
+    /* width: calc(100% - 20px); */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+}
+
+.popup {
+    display: flex;
+    align-items: center;
+    background: 
+        repeating-linear-gradient(
+            45deg,
+            rgba(255, 255, 255, 0.05) 1px,
+            rgba(0, 47, 255, 0.05) 3px,
+            transparent 2px,
+            transparent 4px
+        ),
+        rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(3px);
+    margin-right: 1%;
+    border-radius: 5%;
+    /* box-shadow: 10px 10px 10px rgba(255, 255, 255, 0.3) inset; */
+    box-shadow: 0px 0px 15px 15px rgba(83, 158, 255, 0.1);
+    padding: 10px;
+    width: 25%;
+    height: 95%;
+    z-index: 30;
+}
