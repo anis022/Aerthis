@@ -4,15 +4,25 @@ import Globe from 'react-globe.gl';
 import EarthLoading from './EarthLoading';
 import Popup from './Popup';
 import SearchBar from './SearchBar';
-import { isAbsolute } from 'path';
 
-const EarthGlobe: React.FC<EarthGlobeProps> = ({ heatmapData, plasticData }) => {
+const EarthGlobe: React.FC<any> = ({ heatmapData, plasticData }) => {
   const globeEl = useRef<any>(null);
   const [globeReady, setGlobeReady] = useState(false);
   const [showOverlay, setShowOverlay] = useState(true);
   const [jsonData, setJsonData] = useState<any>(null);
   const isMounted = useRef(false);
   
+  const [airToggle, setAirToggle] = useState(true);
+  const [plasticToggle, setPlasticToggle] = useState(true);
+  
+  document.getElementById("airToggle")?.addEventListener("click", () => {
+    setAirToggle(!airToggle);
+  })
+
+  document.getElementById("plasticToggle")?.addEventListener("click", () => {
+    setPlasticToggle(!plasticToggle);
+  })
+
 
   useEffect(() => {
     isMounted.current = true;
@@ -93,6 +103,10 @@ const EarthGlobe: React.FC<EarthGlobeProps> = ({ heatmapData, plasticData }) => 
           <EarthLoading />
         </div>
       )}
+      <div className="absolute flex z-30 right-12 top-4 space-x-4">
+        <span id="airToggle" className={`flex items-center hover:cursor-pointer ${airToggle ? "" : "line-through opacity-50"}`}><div className='w-6 h-6 bg-[#64c54b] rounded-full m-2'></div>Air quality</span>
+        <span id="plasticToggle" className={`flex items-center hover:cursor-pointer ${plasticToggle ? "" : "line-through opacity-50"}`}><div className='w-6 h-6 bg-purple-600 rounded-full m-2'></div>Plastic</span>
+      </div>
       <SearchBar handleSearch={handleSearch} />
       <Popup jsonData={jsonData} />
       <div style={{left: '-45%', position:'absolute', overflow:"hidden", width:'100wh', height:'100vh'}}>
@@ -114,13 +128,13 @@ const EarthGlobe: React.FC<EarthGlobeProps> = ({ heatmapData, plasticData }) => 
           
           // --- Future Heatmap Prop ---
           // heatmapsData={[[{"lat": 0, "lng": 0, "aqi": 1}, {"lat": 0, "lng": -10, "aqi": 2}]]} // Data for heatmap
-          heatmapsData={[heatmapData]}
+          heatmapsData={airToggle ? [heatmapData] : []}
           heatmapPointLat="lat"
           heatmapPointLng="lng"
           heatmapPointWeight="aqi"
 
           // pointsData={[{"lat": 0, "lng": 0}, {"lat": 0, "lng": -10}]}
-          pointsData={plasticData}
+          pointsData={plasticToggle ? plasticData : []}
           pointAltitude={0}
           pointColor={() => "purple"}
 
