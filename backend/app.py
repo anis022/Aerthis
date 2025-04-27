@@ -28,10 +28,6 @@ def add_cors_headers(response):
 @app.route('/', methods=['GET'])
 def get_geo_data(lat, lng):
     # info for the popup on the map
-
-    info_dict = {
-        "aqi": 2
-    }
     return
 
 if __name__ == '__main__':
