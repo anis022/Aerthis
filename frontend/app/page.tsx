@@ -41,7 +41,6 @@ const Home = async () => {
 
   return (
     <div>
-      <SearchBar />
       <EarthGlobeWrapper heatmapData={heatmapData} plasticData={plasticData} />
     </div>
   )

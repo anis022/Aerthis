@@ -109,7 +109,7 @@ def get_search():
     coords = generate_coordinates_response(search_query)
     coords = json.loads(coords)
     coords = (float(coords['lat']), float(coords['lng']))
-    print(coords)
+    # print(coords)
     return get_data(coords)
 
 if __name__ == '__main__':

@@ -1,8 +1,9 @@
 'use client'
-import React, { useState, useEffect, useRef, useCallback, Suspense } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Globe from 'react-globe.gl';
 import EarthLoading from './EarthLoading';
 import Popup from './Popup';
+import SearchBar from './SearchBar';
 
 const EarthGlobe = ({ heatmapData, plasticData }: any) => {
   const globeEl = useRef<any>(null);
@@ -66,10 +67,12 @@ const EarthGlobe = ({ heatmapData, plasticData }: any) => {
       console.log(data);
       setJsonData(data);
       // Handle the response data as needed
-    })
-
-
+    });
   }
+
+  const handleSearch = () => {
+    console.log("Search button clicked");
+  };
 
 
   return (
@@ -79,6 +82,7 @@ const EarthGlobe = ({ heatmapData, plasticData }: any) => {
           <EarthLoading />
         </div>
       )}
+      <SearchBar handleSearch={handleSearch} />
       <Popup jsonData={jsonData} />
       <Globe
         ref={globeEl}

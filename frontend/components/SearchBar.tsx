@@ -4,7 +4,7 @@ import React from "react";
 import "./SearchBar.css";
 import { FaSearch } from "react-icons/fa";
 
-const SearchBar = () => {
+const SearchBar = ({ handleSearch }: any) => {
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault(); // Prevents page reload
 
@@ -22,8 +22,8 @@ const SearchBar = () => {
 
     const data = await response.json();
     if (response.ok) {
-      alert("Searched");
-      console.log(data);
+      console.log("Searched :", data);
+      handleSearch(data);
     } else {
       alert("Search failed: " + data.message);
     }
