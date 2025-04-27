@@ -46,7 +46,7 @@ def get_data(coords):
     else:
         percentage_of_gdp = "Not available"
 
-    gemini_response = generate_pop_up_response(f"Country: {country_name}, GDP: {gdp}, Disaster Spending: {dis}, Temperature Difference: {tmp}, Air Quality Index: {data_aqi["aqi"]}, Biggest Air Polluant: {data_aqi["dom"]}")
+    gemini_response = generate_pop_up_response(f"Country: {country_name}, GDP: {gdp}, Disaster Spending: {dis}, Temperature Difference: {tmp}, Air Quality Index: {data_aqi['aqi']}, Biggest Air Polluant: {data_aqi['dom']}")
     gemini_response = json.loads(gemini_response)
     gemini_response['Country'] = country_name
     gemini_response['GDP'] = gdp
