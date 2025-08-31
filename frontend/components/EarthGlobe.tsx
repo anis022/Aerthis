@@ -10,7 +10,10 @@ const EarthGlobe: React.FC<any> = ({ heatmapData, plasticData }) => {
   const [globeReady, setGlobeReady] = useState(false);
   const [showOverlay, setShowOverlay] = useState(true);
   const [jsonData, setJsonData] = useState<any>(null);
+  const [backendReady, setBackendReady] = useState(false);
+  const [loadingMessage, setLoadingMessage] = useState("Loading Earth...");
   const isMounted = useRef(false);
+  const healthCheckInterval = useRef<NodeJS.Timeout | null>(null);
   
   const [airToggle, setAirToggle] = useState(true);
   const [plasticToggle, setPlasticToggle] = useState(true);
@@ -33,12 +36,58 @@ const EarthGlobe: React.FC<any> = ({ heatmapData, plasticData }) => {
     };
   }, []);
 
+  // Backend health check useEffect
+  useEffect(() => {
+    const checkBackendHealth = async () => {
+      try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/test`, {
+          method: 'GET',
+          credentials: 'include',
+        });
+        
+        if (response.ok) {
+          setBackendReady(true);
+          setLoadingMessage("Loading Earth...");
+          if (healthCheckInterval.current) {
+            clearInterval(healthCheckInterval.current);
+            healthCheckInterval.current = null;
+          }
+        } else {
+          setBackendReady(false);
+          setLoadingMessage("Waiting for backend to start...");
+        }
+      } catch (error) {
+        setBackendReady(false);
+        setLoadingMessage("Waiting for backend to start...");
+      }
+    };
+
+    // Initial check
+    checkBackendHealth();
+    
+    // Set up interval to check every 10 seconds if backend is not ready
+    if (!backendReady) {
+      healthCheckInterval.current = setInterval(checkBackendHealth, 10000);
+    }
+
+    // Cleanup function
+    return () => {
+      if (healthCheckInterval.current) {
+        clearInterval(healthCheckInterval.current);
+        healthCheckInterval.current = null;
+      }
+    };
+  }, [backendReady]); // Re-run when backendReady changes
+
   const handleGlobeReady = useCallback(() => {
     if (isMounted.current) {
       setGlobeReady(true);
-      setShowOverlay(false);
+      // Only hide overlay if both globe and backend are ready
+      if (backendReady) {
+        setShowOverlay(false);
+      }
     }
-  }, []);
+  }, [backendReady]);
 
   useEffect(() => {
     // Optional: Setup camera controls or initial view
@@ -51,9 +100,12 @@ const EarthGlobe: React.FC<any> = ({ heatmapData, plasticData }) => {
         // Set initial point of view
         globeEl.current.pointOfView({ lat: 32, lng: -55, altitude: 1.5 }, 1500); // Adjust altitude for zoom
 
-        setShowOverlay(false); // Hide loading overlay
+        // Only hide overlay if both globe and backend are ready
+        if (backendReady) {
+          setShowOverlay(false);
+        }
     }
-  }, [globeReady]); // Re-run if globe becomes ready
+  }, [globeReady, backendReady]); // Re-run if globe or backend becomes ready
 
   const handleGlobeClick = ({ lat, lng }: { lat: number; lng: number }, event: Event) => {
     handleClick(lat, lng);
@@ -100,7 +152,7 @@ const EarthGlobe: React.FC<any> = ({ heatmapData, plasticData }) => {
     <div>
       {showOverlay && (
         <div className="absolute inset-0 flex items-center justify-center z-10 duration-500 transition-opacity">
-          <EarthLoading />
+          <EarthLoading message={loadingMessage} />
         </div>
       )}
       <div className="absolute flex z-30 right-12 top-4 space-x-4">
