@@ -10,7 +10,7 @@ from api import generate_coordinates_response, generate_pop_up_response
 
 # Load environment variables from .env file
 load_dotenv()
-import db
+
 # Create a Flask application instance
 app = Flask(__name__)
 # Add CORS headers to all responses
