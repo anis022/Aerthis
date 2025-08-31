@@ -5,15 +5,19 @@ import EarthLoading from './EarthLoading';
 import Popup from './Popup';
 import SearchBar from './SearchBar';
 
-const EarthGlobe: React.FC<any> = ({ heatmapData, plasticData }) => {
+const EarthGlobe: React.FC = () => {
   const globeEl = useRef<any>(null);
   const [globeReady, setGlobeReady] = useState(false);
   const [showOverlay, setShowOverlay] = useState(true);
   const [jsonData, setJsonData] = useState<any>(null);
   const [backendReady, setBackendReady] = useState(false);
   const [loadingMessage, setLoadingMessage] = useState("Loading Earth...");
+  const [heatmapData, setHeatmapData] = useState<any[]>([]);
+  const [plasticData, setPlasticData] = useState<any[]>([]);
+  const [dataReady, setDataReady] = useState(false);
   const isMounted = useRef(false);
   const healthCheckInterval = useRef<NodeJS.Timeout | null>(null);
+  const dataFetchInterval = useRef<NodeJS.Timeout | null>(null);
   
   const [airToggle, setAirToggle] = useState(true);
   const [plasticToggle, setPlasticToggle] = useState(true);
@@ -35,6 +39,73 @@ const EarthGlobe: React.FC<any> = ({ heatmapData, plasticData }) => {
       isMounted.current = false;
     };
   }, []);
+
+  // Data fetching useEffect
+  useEffect(() => {
+    const fetchData = async () => {
+      if (!backendReady) return;
+      
+      try {
+        setLoadingMessage("Loading map data...");
+        
+        // Fetch heatmap data
+        const heatmapResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/get-heatmap-data`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+        });
+        
+        // Fetch plastic data
+        const plasticResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/get-plastic-data`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+        });
+
+        if (heatmapResponse.ok && plasticResponse.ok) {
+          const heatmapResult = await heatmapResponse.json();
+          const plasticResult = await plasticResponse.json();
+          
+          setHeatmapData(heatmapResult);
+          setPlasticData(plasticResult);
+          setDataReady(true);
+          setLoadingMessage("Loading Earth...");
+          
+          // Clear the data fetch interval if it exists
+          if (dataFetchInterval.current) {
+            clearInterval(dataFetchInterval.current);
+            dataFetchInterval.current = null;
+          }
+        } else {
+          throw new Error('Failed to fetch data');
+        }
+      } catch (error) {
+        console.error('Error fetching map data:', error);
+        setDataReady(false);
+        setLoadingMessage("Loading map data...");
+      }
+    };
+
+    // Initial fetch when backend becomes ready
+    if (backendReady && !dataReady) {
+      fetchData();
+      
+      // Set up interval to retry every 10 seconds if data fetching fails
+      dataFetchInterval.current = setInterval(fetchData, 10000);
+    }
+
+    // Cleanup function
+    return () => {
+      if (dataFetchInterval.current) {
+        clearInterval(dataFetchInterval.current);
+        dataFetchInterval.current = null;
+      }
+    };
+  }, [backendReady, dataReady]); // Re-run when backend becomes ready or data status changes
 
   // Backend health check useEffect
   useEffect(() => {
@@ -82,12 +153,12 @@ const EarthGlobe: React.FC<any> = ({ heatmapData, plasticData }) => {
   const handleGlobeReady = useCallback(() => {
     if (isMounted.current) {
       setGlobeReady(true);
-      // Only hide overlay if both globe and backend are ready
-      if (backendReady) {
+      // Only hide overlay if globe, backend, and data are all ready
+      if (backendReady && dataReady) {
         setShowOverlay(false);
       }
     }
-  }, [backendReady]);
+  }, [backendReady, dataReady]);
 
   useEffect(() => {
     // Optional: Setup camera controls or initial view
@@ -100,12 +171,12 @@ const EarthGlobe: React.FC<any> = ({ heatmapData, plasticData }) => {
         // Set initial point of view
         globeEl.current.pointOfView({ lat: 32, lng: -55, altitude: 1.5 }, 1500); // Adjust altitude for zoom
 
-        // Only hide overlay if both globe and backend are ready
-        if (backendReady) {
+        // Only hide overlay if globe, backend, and data are all ready
+        if (backendReady && dataReady) {
           setShowOverlay(false);
         }
     }
-  }, [globeReady, backendReady]); // Re-run if globe or backend becomes ready
+  }, [globeReady, backendReady, dataReady]); // Re-run if any condition changes
 
   const handleGlobeClick = ({ lat, lng }: { lat: number; lng: number }, event: Event) => {
     handleClick(lat, lng);
