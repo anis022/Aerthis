@@ -1,4 +1,4 @@
-# Aerthis
+# Aerthis [(Video demo)](https://youtu.be/X9niM7LmxoA?si=4SMRQRA0nBSpjKyb)
 ## Inspiration
 We came up with the idea for Aerthis by wanting to solve a problem many of us face in everyday conversations: the lack of effortless and well-rounded information sources about specific countries' role in the worsening of climate change and augmenting pollution in general.
 
