@@ -7,11 +7,10 @@ const DynamicEarthGlobe = dynamic(() => import('@/components/EarthGlobe'), {
   loading: () => <EarthLoading />, // Optional loading indicator
 });
 
-export default function EarthGlobeWrapper({ heatmapData, plasticData }: any) {
-    // console.log("Heat map dataaaa:", heatmapData);
+export default function EarthGlobeWrapper() {
   return (
     <div>
-      <DynamicEarthGlobe heatmapData={heatmapData} plasticData={plasticData}/>
+      <DynamicEarthGlobe />
     </div>
   );
 }

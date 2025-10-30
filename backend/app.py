@@ -10,7 +10,7 @@ from api import generate_coordinates_response, generate_pop_up_response
 
 # Load environment variables from .env file
 load_dotenv()
-import db
+
 # Create a Flask application instance
 app = Flask(__name__)
 # Add CORS headers to all responses
@@ -76,6 +76,10 @@ def get_geo_data():
     # info for the popup on the map
     coords= (lat, lng)
     return get_data(coords=coords)
+
+@app.route('/test', methods=['GET'])
+def test():
+    return "I'm alive", 200
 
 @app.route('/get-heatmap-data-test', methods=['GET'])
 def get_heatmap_data_test():

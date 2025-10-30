@@ -8,3 +8,4 @@ openpyxl
 reverse_geocode
 google
 google.genai
+gunicorn

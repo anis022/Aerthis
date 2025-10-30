@@ -5,12 +5,19 @@ import EarthLoading from './EarthLoading';
 import Popup from './Popup';
 import SearchBar from './SearchBar';
 
-const EarthGlobe: React.FC<any> = ({ heatmapData, plasticData }) => {
+const EarthGlobe: React.FC = () => {
   const globeEl = useRef<any>(null);
   const [globeReady, setGlobeReady] = useState(false);
   const [showOverlay, setShowOverlay] = useState(true);
   const [jsonData, setJsonData] = useState<any>(null);
+  const [backendReady, setBackendReady] = useState(false);
+  const [loadingMessage, setLoadingMessage] = useState("Loading Earth...");
+  const [heatmapData, setHeatmapData] = useState<any[]>([]);
+  const [plasticData, setPlasticData] = useState<any[]>([]);
+  const [dataReady, setDataReady] = useState(false);
   const isMounted = useRef(false);
+  const healthCheckInterval = useRef<NodeJS.Timeout | null>(null);
+  const dataFetchInterval = useRef<NodeJS.Timeout | null>(null);
   
   const [airToggle, setAirToggle] = useState(true);
   const [plasticToggle, setPlasticToggle] = useState(true);
@@ -33,12 +40,125 @@ const EarthGlobe: React.FC<any> = ({ heatmapData, plasticData }) => {
     };
   }, []);
 
+  // Data fetching useEffect
+  useEffect(() => {
+    const fetchData = async () => {
+      if (!backendReady) return;
+      
+      try {
+        setLoadingMessage("Loading map data...");
+        
+        // Fetch heatmap data
+        const heatmapResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/get-heatmap-data`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+        });
+        
+        // Fetch plastic data
+        const plasticResponse = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/get-plastic-data`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+        });
+
+        if (heatmapResponse.ok && plasticResponse.ok) {
+          const heatmapResult = await heatmapResponse.json();
+          const plasticResult = await plasticResponse.json();
+          
+          setHeatmapData(heatmapResult);
+          setPlasticData(plasticResult);
+          setDataReady(true);
+          setLoadingMessage("Loading Earth...");
+          
+          // Clear the data fetch interval if it exists
+          if (dataFetchInterval.current) {
+            clearInterval(dataFetchInterval.current);
+            dataFetchInterval.current = null;
+          }
+        } else {
+          throw new Error('Failed to fetch data');
+        }
+      } catch (error) {
+        console.error('Error fetching map data:', error);
+        setDataReady(false);
+        setLoadingMessage("Loading map data...");
+      }
+    };
+
+    // Initial fetch when backend becomes ready
+    if (backendReady && !dataReady) {
+      fetchData();
+      
+      // Set up interval to retry every 10 seconds if data fetching fails
+      dataFetchInterval.current = setInterval(fetchData, 10000);
+    }
+
+    // Cleanup function
+    return () => {
+      if (dataFetchInterval.current) {
+        clearInterval(dataFetchInterval.current);
+        dataFetchInterval.current = null;
+      }
+    };
+  }, [backendReady, dataReady]); // Re-run when backend becomes ready or data status changes
+
+  // Backend health check useEffect
+  useEffect(() => {
+    const checkBackendHealth = async () => {
+      try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/test`, {
+          method: 'GET',
+          credentials: 'include',
+        });
+        
+        if (response.ok) {
+          setBackendReady(true);
+          setLoadingMessage("Loading Earth...");
+          if (healthCheckInterval.current) {
+            clearInterval(healthCheckInterval.current);
+            healthCheckInterval.current = null;
+          }
+        } else {
+          setBackendReady(false);
+          setLoadingMessage("Waiting for backend to start...");
+        }
+      } catch (error) {
+        setBackendReady(false);
+        setLoadingMessage("Waiting for backend to start...");
+      }
+    };
+
+    // Initial check
+    checkBackendHealth();
+    
+    // Set up interval to check every 10 seconds if backend is not ready
+    if (!backendReady) {
+      healthCheckInterval.current = setInterval(checkBackendHealth, 10000);
+    }
+
+    // Cleanup function
+    return () => {
+      if (healthCheckInterval.current) {
+        clearInterval(healthCheckInterval.current);
+        healthCheckInterval.current = null;
+      }
+    };
+  }, [backendReady]); // Re-run when backendReady changes
+
   const handleGlobeReady = useCallback(() => {
     if (isMounted.current) {
       setGlobeReady(true);
-      setShowOverlay(false);
+      // Only hide overlay if globe, backend, and data are all ready
+      if (backendReady && dataReady) {
+        setShowOverlay(false);
+      }
     }
-  }, []);
+  }, [backendReady, dataReady]);
 
   useEffect(() => {
     // Optional: Setup camera controls or initial view
@@ -51,9 +171,12 @@ const EarthGlobe: React.FC<any> = ({ heatmapData, plasticData }) => {
         // Set initial point of view
         globeEl.current.pointOfView({ lat: 32, lng: -55, altitude: 1.5 }, 1500); // Adjust altitude for zoom
 
-        setShowOverlay(false); // Hide loading overlay
+        // Only hide overlay if globe, backend, and data are all ready
+        if (backendReady && dataReady) {
+          setShowOverlay(false);
+        }
     }
-  }, [globeReady]); // Re-run if globe becomes ready
+  }, [globeReady, backendReady, dataReady]); // Re-run if any condition changes
 
   const handleGlobeClick = ({ lat, lng }: { lat: number; lng: number }, event: Event) => {
     handleClick(lat, lng);
@@ -100,7 +223,7 @@ const EarthGlobe: React.FC<any> = ({ heatmapData, plasticData }) => {
     <div>
       {showOverlay && (
         <div className="absolute inset-0 flex items-center justify-center z-10 duration-500 transition-opacity">
-          <EarthLoading />
+          <EarthLoading message={loadingMessage} />
         </div>
       )}
       <div className="absolute flex z-30 right-12 top-4 space-x-4">
