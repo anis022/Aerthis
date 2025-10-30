@@ -115,8 +115,10 @@ const EarthGlobe: React.FC = () => {
           method: 'GET',
           credentials: 'include',
         });
+
+        const data = await response.json();
         
-        if (response.ok) {
+        if (data.message === "I'm alive") {
           setBackendReady(true);
           setLoadingMessage("Loading Earth...");
           if (healthCheckInterval.current) {
