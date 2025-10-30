@@ -79,7 +79,7 @@ def get_geo_data():
 
 @app.route('/test', methods=['GET'])
 def test():
-    return "I'm alive", 200
+    return jsonify({"message": "I'm alive"}), 200
 
 @app.route('/get-heatmap-data-test', methods=['GET'])
 def get_heatmap_data_test():
