@@ -56,6 +56,11 @@ const Popup = ({ jsonData }: { jsonData: any }) => {
     temperatureDiff = `+${temperatureDiff}°C`;
   }
 
+  if (jsonData?.status === "loading") {
+    return <div className={`${styles.popupContainer}`}>
+      <div className={styles.popup}><h1>Loading...</h1></div></div>;
+  }
+
   return (
     <div className={`${styles.popupContainer}`}>
       <div className={styles.popup}>
